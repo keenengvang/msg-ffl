@@ -1,0 +1,49 @@
+.card {
+  max-width: 480px;
+  margin: var(--space-12) auto;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  text-align: center;
+}
+
+.icon {
+  font-size: 2.5rem;
+}
+
+.title {
+  font-family: var(--font-pixel);
+  font-size: 0.85rem;
+  color: var(--color-accent-pink);
+  text-shadow: var(--glow-pink);
+}
+
+.message {
+  font-family: var(--font-retro);
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.retry {
+  font-family: var(--font-pixel);
+  font-size: 0.6rem;
+  padding: var(--space-2) var(--space-4);
+  margin-top: var(--space-2);
+  border: 2px solid var(--color-accent-cyan);
+  background: transparent;
+  color: var(--color-accent-cyan);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.retry:hover {
+  background: var(--color-accent-cyan);
+  color: var(--color-bg);
+  box-shadow: var(--glow-cyan);
+}

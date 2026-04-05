@@ -1,0 +1,2 @@
+export PATH="$HOME/.nvm/versions/node/v22.22.2/bin:$PATH"
+pnpm exec lint-staged

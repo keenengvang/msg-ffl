@@ -1,0 +1,79 @@
+.card {
+  background: var(--color-bg-card);
+  border: var(--border-pixel);
+  box-shadow: var(--shadow-pixel);
+  padding: var(--space-4);
+  position: relative;
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--shadow-pixel-inset);
+  pointer-events: none;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  background: var(--color-bg-card-hover);
+  border-color: var(--color-accent-cyan);
+  box-shadow: var(--shadow-pixel), var(--glow-cyan);
+}
+
+.clickable:focus-visible {
+  outline: 2px solid var(--color-accent-cyan);
+  outline-offset: 2px;
+}
+
+/* Variants */
+.highlight {
+  border-color: var(--color-accent-cyan);
+  box-shadow: var(--shadow-pixel), var(--glow-cyan);
+}
+
+.danger {
+  border-color: var(--color-accent-pink);
+  box-shadow: var(--shadow-pixel), var(--glow-pink);
+}
+
+.legendary {
+  animation: legendaryBorder 2s ease-in-out infinite;
+}
+
+@keyframes legendaryBorder {
+  0% {
+    border-color: var(--color-legendary);
+    box-shadow:
+      var(--shadow-pixel),
+      0 0 8px rgba(255, 167, 38, 0.3);
+  }
+  50% {
+    border-color: #ffe082;
+    box-shadow:
+      var(--shadow-pixel),
+      0 0 20px rgba(255, 215, 0, 0.7);
+  }
+  100% {
+    border-color: var(--color-legendary);
+    box-shadow:
+      var(--shadow-pixel),
+      0 0 8px rgba(255, 167, 38, 0.3);
+  }
+}
+
+.win {
+  border-color: var(--color-win);
+  box-shadow: var(--shadow-pixel), var(--glow-green);
+}
+
+.loss {
+  border-color: var(--color-loss);
+  box-shadow: var(--shadow-pixel), var(--glow-pink);
+}

@@ -1,0 +1,95 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.title {
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  color: var(--color-accent-cyan);
+}
+.sub {
+  font-family: var(--font-retro);
+  font-size: 18px;
+  color: var(--color-text-secondary);
+}
+.boardCard {
+  padding: var(--space-2);
+}
+.tableWrap {
+  overflow-x: auto;
+}
+.board {
+  border-collapse: collapse;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.roundHeader,
+.teamHeader {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--color-text-muted);
+  padding: var(--space-2) var(--space-2);
+  text-align: center;
+  border-bottom: 2px solid var(--color-border);
+  white-space: nowrap;
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.roundCell {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: var(--space-2);
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.pickCell {
+  padding: 3px 4px;
+  border: 1px solid var(--color-border-subtle);
+  vertical-align: top;
+  min-width: 80px;
+  max-width: 90px;
+}
+.pickCell:hover {
+  background: var(--color-bg-card-hover);
+}
+.emptyCell {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  padding: var(--space-2);
+  border: 1px solid var(--color-border-subtle);
+}
+.pick {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.pos {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  font-weight: bold;
+}
+.playerName {
+  font-family: var(--font-retro);
+  font-size: 14px;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.team {
+  font-family: var(--font-pixel);
+  font-size: 5px;
+  color: var(--color-text-muted);
+}
+.empty {
+  font-family: var(--font-retro);
+  font-size: 20px;
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: var(--space-8);
+}

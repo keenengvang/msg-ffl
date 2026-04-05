@@ -1,0 +1,67 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--space-8);
+  background: var(--color-bg);
+}
+
+.inner {
+  text-align: center;
+  max-width: 480px;
+}
+
+.glitch {
+  font-size: 4rem;
+  margin-bottom: var(--space-4);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.title {
+  font-family: var(--font-pixel);
+  font-size: 1.25rem;
+  color: var(--color-accent-pink);
+  text-shadow: var(--glow-pink);
+  margin-bottom: var(--space-4);
+}
+
+.message {
+  font-family: var(--font-retro);
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-8);
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  margin-bottom: var(--space-8);
+}
+
+.btn {
+  font-family: var(--font-pixel);
+  font-size: 0.65rem;
+  padding: var(--space-3) var(--space-5);
+  border: 2px solid var(--color-accent-cyan);
+  background: transparent;
+  color: var(--color-accent-cyan);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn:hover {
+  background: var(--color-accent-cyan);
+  color: var(--color-bg);
+  box-shadow: var(--glow-cyan);
+}
+
+.sub {
+  font-family: var(--font-pixel);
+  font-size: 0.55rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  animation: blink 1.5s step-end infinite;
+}

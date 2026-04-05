@@ -1,0 +1,87 @@
+:root {
+  /* Backgrounds */
+  --color-bg-primary: #0a0a0f;
+  --color-bg-secondary: #111118;
+  --color-bg-card: #1a1a2e;
+  --color-bg-card-hover: #16213e;
+  --color-bg-sidebar: #0d0d1a;
+
+  /* Borders */
+  --color-border: #0f3460;
+  --color-border-bright: #e94560;
+  --color-border-subtle: #1a2a4a;
+
+  /* Text */
+  --color-text-primary: #e8f4fd;
+  --color-text-secondary: #90a4ae;
+  --color-text-accent: #00e5ff;
+  --color-text-muted: #546e7a;
+
+  /* Accents */
+  --color-accent-cyan: #00e5ff;
+  --color-accent-pink: #e94560;
+  --color-accent-purple: #7c4dff;
+
+  /* Rarity */
+  --color-common: #78909c;
+  --color-rare: #42a5f5;
+  --color-epic: #ab47bc;
+  --color-legendary: #ffa726;
+
+  /* Game states */
+  --color-win: #00e676;
+  --color-loss: #ff5252;
+  --color-tie: #ffab40;
+
+  /* Ranks */
+  --color-rank-1: #ffd700;
+  --color-rank-2: #c0c0c0;
+  --color-rank-3: #cd7f32;
+
+  /* Positions */
+  --color-pos-qb: #ef5350;
+  --color-pos-rb: #66bb6a;
+  --color-pos-wr: #42a5f5;
+  --color-pos-te: #ffa726;
+  --color-pos-k: #ab47bc;
+  --color-pos-def: #78909c;
+
+  /* Fonts */
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-retro: 'VT323', monospace;
+  --font-body: system-ui, -apple-system, sans-serif;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Layout */
+  --sidebar-width: 220px;
+  --topbar-height: 56px;
+
+  /* Shadows / Glow */
+  --shadow-pixel: 4px 4px 0px rgba(0, 0, 0, 0.8);
+  --shadow-pixel-sm: 2px 2px 0px rgba(0, 0, 0, 0.8);
+  --shadow-pixel-inset: inset 2px 2px 0px rgba(255, 255, 255, 0.05);
+  --glow-cyan: 0 0 12px rgba(0, 229, 255, 0.4);
+  --glow-gold: 0 0 12px rgba(255, 215, 0, 0.5);
+  --glow-pink: 0 0 12px rgba(233, 69, 96, 0.4);
+  --glow-green: 0 0 12px rgba(0, 230, 118, 0.4);
+
+  /* Borders (shorthand) */
+  --border-pixel: 2px solid var(--color-border);
+  --border-pixel-bright: 2px solid var(--color-border-bright);
+  --border-pixel-accent: 2px solid var(--color-accent-cyan);
+
+  /* Transitions */
+  --transition-fast: 80ms ease;
+  --transition-base: 150ms ease;
+}

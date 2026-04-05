@@ -1,0 +1,156 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.title {
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  color: var(--color-legendary);
+  text-shadow: var(--glow-gold);
+}
+
+.trophyCase {
+}
+.trophyInner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: var(--space-4);
+}
+.trophyIcon {
+  font-size: 64px;
+  animation: shimmer 2s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.5) drop-shadow(0 0 12px gold);
+  }
+}
+.champLabel {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--color-legendary);
+  letter-spacing: 0.15em;
+}
+.champName {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--color-text-primary);
+  margin-top: var(--space-2);
+}
+.champManager {
+  font-family: var(--font-retro);
+  font-size: 20px;
+  color: var(--color-text-secondary);
+}
+
+.filters {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.filter {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--color-text-secondary);
+  border: var(--border-pixel);
+  padding: var(--space-2) var(--space-3);
+  transition: all var(--transition-base);
+}
+.filter:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-text-primary);
+}
+.filterActive {
+  color: var(--color-accent-cyan) !important;
+  border-color: var(--color-accent-cyan) !important;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-3);
+}
+
+.badge {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+.earned {
+}
+.locked {
+  opacity: 0.35;
+  filter: grayscale(1);
+}
+
+.badgeIcon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.badgeInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.badgeTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-1);
+  flex-wrap: wrap;
+}
+
+.badgeName {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--color-text-primary);
+}
+
+.badgeDesc {
+  font-family: var(--font-retro);
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.earners {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.earner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  font-family: var(--font-retro);
+  font-size: 14px;
+  color: var(--color-text-primary);
+}
+.earnerWeek {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--color-text-muted);
+}
+.earnerDetail {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--color-accent-cyan);
+}
+
+.locked {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--color-text-muted);
+}
