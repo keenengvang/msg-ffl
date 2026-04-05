@@ -1,0 +1,7 @@
+interface:
+  display_name: "CSS Modules Layout"
+  short_description: "Keep layout ownership in parents and pages."
+  default_prompt: "Use $css-modules-layout to apply CSS Modules without leaking layout concerns into child components."
+
+policy:
+  allow_implicit_invocation: true

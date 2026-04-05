@@ -1,0 +1,59 @@
+.match {
+  background: var(--color-bg-card);
+  border: var(--border-pixel);
+  box-shadow: var(--shadow-pixel);
+  overflow: hidden;
+}
+
+.matchComplete {
+  border-color: var(--color-accent-cyan);
+}
+
+.side {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.side:last-child {
+  border-bottom: none;
+}
+
+.winner {
+  background: rgba(0, 230, 118, 0.08);
+}
+
+.loser {
+  opacity: 0.5;
+}
+
+.tbdAvatar {
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--color-text-muted);
+}
+
+.teamName {
+  flex: 1;
+  font-family: var(--font-retro);
+  font-size: 18px;
+  color: var(--color-text-primary);
+}
+
+.points {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--color-accent-cyan);
+}
+
+.crown {
+  font-size: 14px;
+}

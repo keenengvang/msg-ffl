@@ -1,0 +1,21 @@
+model = "gpt-5-codex"
+
+[history]
+persistence = "save-all"
+
+[features]
+codex_hooks = true
+
+[agents]
+max_threads = 4
+max_depth = 1
+
+[projects."/Users/keeneng/Development/msg-ffl"]
+trust_level = "trusted"
+
+[mcp_servers.openai_docs]
+url = "https://developers.openai.com/mcp"
+
+[mcp_servers.context7]
+command = "npx"
+args = ["-y", "@upstash/context7-mcp"]

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Review Feature Boundaries"
+  short_description: "Review architecture and feature ownership."
+  default_prompt: "Use $review-feature-boundaries to review code for architecture and boundary issues."
+
+policy:
+  allow_implicit_invocation: true

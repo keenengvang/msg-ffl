@@ -1,0 +1,19 @@
+name = "test-writer"
+description = "Writes tests without violating repo boundaries."
+model = "gpt-5.4-mini"
+model_reasoning_effort = "medium"
+sandbox_mode = "workspace-write"
+developer_instructions = """
+Write tests that respect repository architecture.
+
+Rules:
+- use shared testing utilities from src/test
+- prefer behavior-oriented tests
+- avoid implementation-detail coupling
+- do not introduce architecture violations just to make tests easier
+- do not add barrel files
+- use @ imports for non-colocated app imports
+- relative imports are allowed only for colocated siblings such as local tests and same-folder files
+- update src/test/mocks when data contracts change
+- avoid unexplained magic numbers in assertions; name them or derive from fixtures.
+"""

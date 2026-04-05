@@ -1,0 +1,89 @@
+.card {
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.type {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--color-text-primary);
+}
+
+.time {
+  font-family: var(--font-retro);
+  font-size: 16px;
+  color: var(--color-text-muted);
+  margin-left: auto;
+}
+
+.bid {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--color-legendary);
+  border: 1px solid var(--color-legendary);
+  padding: 2px 6px;
+}
+
+.teams {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.team {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-retro);
+  font-size: 18px;
+  color: var(--color-text-primary);
+}
+
+.players {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.playerAdd,
+.playerDrop {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.addTag {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--color-win);
+  border: 1px solid var(--color-win);
+  padding: 1px 4px;
+}
+
+.dropTag {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--color-loss);
+  border: 1px solid var(--color-loss);
+  padding: 1px 4px;
+}
+
+.playerName {
+  font-family: var(--font-retro);
+  font-size: 18px;
+  color: var(--color-text-primary);
+}
+
+.toTeam {
+  font-family: var(--font-retro);
+  font-size: 16px;
+  color: var(--color-text-secondary);
+}

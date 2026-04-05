@@ -1,0 +1,7 @@
+interface:
+  display_name: "TanStack Query No Effects"
+  short_description: "Prefer query hooks over effect-driven fetching."
+  default_prompt: "Use $tanstack-query-no-effects to design data flow without effect-driven fetching."
+
+policy:
+  allow_implicit_invocation: true

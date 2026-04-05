@@ -12,15 +12,12 @@ dist
 dist-ssr
 *.local
 
-# Environment files (keep .env.example committed)
+# Environment files 
 .env
 .env.development
 .env.production
 .env.local
 .env.*.local
-
-# Claude Code
-.claude/
 
 # Playwright
 playwright-report/

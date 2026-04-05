@@ -1,4 +1,4 @@
-import { clamp } from '@/shared/lib/format/format'
+import { clamp } from '@/shared/utils/format/format'
 import styles from './StatBar.module.css'
 
 interface Props {

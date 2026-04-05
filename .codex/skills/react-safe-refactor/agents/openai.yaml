@@ -1,0 +1,7 @@
+interface:
+  display_name: "React Safe Refactor"
+  short_description: "Refactor React code without boundary regressions."
+  default_prompt: "Use $react-safe-refactor to refactor React code while preserving repository conventions."
+
+policy:
+  allow_implicit_invocation: true

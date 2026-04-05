@@ -1,0 +1,7 @@
+interface:
+  display_name: "Create React Feature"
+  short_description: "Create a feature with strict repo boundaries."
+  default_prompt: "Use $create-react-feature to add a new feature in this repository."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,72 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.title {
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  color: var(--color-legendary);
+  text-shadow: var(--glow-gold);
+}
+.champCard {
+}
+.champInner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: var(--space-4);
+}
+.champTrophy {
+  font-size: 56px;
+  animation: shimmer 2s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.5) drop-shadow(0 0 12px gold);
+  }
+}
+.champLabel {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--color-legendary);
+  letter-spacing: 0.15em;
+}
+.champName {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--color-text-primary);
+  margin-top: var(--space-2);
+}
+.bracketTitle {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--color-accent-cyan);
+}
+.toiletTitle {
+  color: var(--color-accent-pink) !important;
+}
+.bracket {
+  display: flex;
+  gap: var(--space-6);
+  overflow-x: auto;
+  padding-bottom: var(--space-4);
+}
+.round {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 220px;
+}
+.roundLabel {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
