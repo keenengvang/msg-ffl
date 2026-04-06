@@ -12,13 +12,25 @@ const NAV_ITEMS = [
   { to: '/transactions', label: 'Transactions', icon: '💱' },
 ]
 
-export function Sidebar() {
+type SidebarProps = {
+  isMobileOpen?: boolean
+  onNavigate?: () => void
+}
+
+export function Sidebar({ isMobileOpen = false, onNavigate }: SidebarProps) {
+  const handleNavigate = () => {
+    onNavigate?.()
+  }
+
   return (
-    <nav className={styles.sidebar}>
+    <nav className={[styles.sidebar, isMobileOpen ? styles.sidebarOpen : ''].join(' ')}>
       <div className={styles.logo}>
         <span className={styles.logoText}>MSG</span>
         <span className={styles.logoSub}>FFL</span>
       </div>
+      <button type="button" className={styles.closeButton} onClick={handleNavigate} aria-label="Close navigation">
+        ✕
+      </button>
 
       <ul className={styles.nav}>
         {NAV_ITEMS.map(({ to, label, icon }) => (
@@ -27,6 +39,7 @@ export function Sidebar() {
               to={to}
               end={to === '/'}
               className={({ isActive }) => [styles.link, isActive ? styles.active : ''].join(' ')}
+              onClick={handleNavigate}
             >
               <span className={styles.icon}>{icon}</span>
               <span className={styles.label}>{label}</span>

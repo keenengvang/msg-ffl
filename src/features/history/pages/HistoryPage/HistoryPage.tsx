@@ -82,38 +82,40 @@ export function HistoryPage() {
         <PixelCard>
           <h2 className={styles.sectionTitle}>{activeData.league.season} FINAL STANDINGS</h2>
           <div className={styles.champion}>🏆 {activeData.standings[0]?.teamName ?? '—'}</div>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>RANK</th>
-                <th>TEAM</th>
-                <th>MANAGER</th>
-                <th>W-L</th>
-                <th>PF</th>
-                <th>PA</th>
-                <th>PLAYOFFS</th>
-              </tr>
-            </thead>
-            <tbody>
-              {activeData.standings.map((s, i) => (
-                <tr key={s.rosterId} className={i < 6 ? styles.playoff : ''}>
-                  <td className={styles.rank}>{formatOrdinal(i + 1)}</td>
-                  <td className={styles.teamName}>{s.teamName}</td>
-                  <td className={styles.manager}>{s.displayName}</td>
-                  <td className={styles.record}>{formatRecord(s.wins, s.losses)}</td>
-                  <td className={styles.pf}>{formatPoints(s.pointsFor)}</td>
-                  <td className={styles.pa}>{formatPoints(s.pointsAgainst)}</td>
-                  <td>
-                    {i < 6 ? (
-                      <span className={styles.inPlayoffs}>✓</span>
-                    ) : (
-                      <span className={styles.outPlayoffs}>✗</span>
-                    )}
-                  </td>
+          <div className={styles.tableWrap}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>RANK</th>
+                  <th>TEAM</th>
+                  <th>MANAGER</th>
+                  <th>W-L</th>
+                  <th>PF</th>
+                  <th>PA</th>
+                  <th>PLAYOFFS</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {activeData.standings.map((s, i) => (
+                  <tr key={s.rosterId} className={i < 6 ? styles.playoff : ''}>
+                    <td className={styles.rank}>{formatOrdinal(i + 1)}</td>
+                    <td className={styles.teamName}>{s.teamName}</td>
+                    <td className={styles.manager}>{s.displayName}</td>
+                    <td className={styles.record}>{formatRecord(s.wins, s.losses)}</td>
+                    <td className={styles.pf}>{formatPoints(s.pointsFor)}</td>
+                    <td className={styles.pa}>{formatPoints(s.pointsAgainst)}</td>
+                    <td>
+                      {i < 6 ? (
+                        <span className={styles.inPlayoffs}>✓</span>
+                      ) : (
+                        <span className={styles.outPlayoffs}>✗</span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </PixelCard>
       )}
 
@@ -121,30 +123,32 @@ export function HistoryPage() {
       {allTime.length > 0 && (
         <PixelCard>
           <h2 className={styles.sectionTitle}>🏅 ALL-TIME LEADERBOARD</h2>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>MANAGER</th>
-                <th>SEASONS</th>
-                <th>W-L</th>
-                <th>TOTAL PF</th>
-                <th>PLAYOFF APPS</th>
-              </tr>
-            </thead>
-            <tbody>
-              {allTime.map((s, i) => (
-                <tr key={s.name}>
-                  <td className={styles.rank}>{formatOrdinal(i + 1)}</td>
-                  <td className={styles.teamName}>{s.name}</td>
-                  <td>{s.seasons}</td>
-                  <td className={styles.record}>{formatRecord(s.wins, s.losses)}</td>
-                  <td className={styles.pf}>{formatPoints(s.pf)}</td>
-                  <td>{s.appearances}</td>
+          <div className={styles.tableWrap}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>MANAGER</th>
+                  <th>SEASONS</th>
+                  <th>W-L</th>
+                  <th>TOTAL PF</th>
+                  <th>PLAYOFF APPS</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {allTime.map((s, i) => (
+                  <tr key={s.name}>
+                    <td className={styles.rank}>{formatOrdinal(i + 1)}</td>
+                    <td className={styles.teamName}>{s.name}</td>
+                    <td>{s.seasons}</td>
+                    <td className={styles.record}>{formatRecord(s.wins, s.losses)}</td>
+                    <td className={styles.pf}>{formatPoints(s.pf)}</td>
+                    <td>{s.appearances}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </PixelCard>
       )}
     </div>

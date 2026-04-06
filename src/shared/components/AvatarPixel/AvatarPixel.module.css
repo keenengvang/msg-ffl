@@ -35,3 +35,18 @@
   height: 120px;
   border-width: 4px;
 }
+
+@media (max-width: 640px) {
+  .md {
+    width: 40px;
+    height: 40px;
+  }
+  .lg {
+    width: 64px;
+    height: 64px;
+  }
+  .xl {
+    width: 96px;
+    height: 96px;
+  }
+}

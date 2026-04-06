@@ -70,3 +70,34 @@
   color: var(--color-text-muted);
   margin-bottom: var(--space-2);
 }
+
+@media (max-width: 1024px) {
+  .title {
+    font-size: 10px;
+  }
+  .bracket {
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 768px) {
+  .bracket {
+    flex-direction: column;
+    overflow-x: visible;
+  }
+  .round {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .champInner {
+    flex-direction: column;
+  }
+  .champName {
+    font-size: 12px;
+  }
+  .champLabel {
+    font-size: 7px;
+  }
+}

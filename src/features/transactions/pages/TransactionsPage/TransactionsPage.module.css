@@ -40,3 +40,22 @@
   text-align: center;
   padding: var(--space-8);
 }
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+  }
+  .filter {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 10px;
+  }
+  .empty {
+    font-size: 16px;
+  }
+}

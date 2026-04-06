@@ -77,3 +77,9 @@
   border-color: var(--color-loss);
   box-shadow: var(--shadow-pixel), var(--glow-pink);
 }
+
+@media (max-width: 768px) {
+  .card {
+    padding: var(--space-3);
+  }
+}

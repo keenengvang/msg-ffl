@@ -214,3 +214,31 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 640px) {
+  .profileHeader {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  .statCols {
+    grid-template-columns: 1fr;
+  }
+  .statVal {
+    font-size: 22px;
+  }
+  .timeline {
+    justify-content: center;
+  }
+  .weekBlock {
+    width: 32px;
+  }
+  .h2hTable {
+    font-size: 16px;
+    display: block;
+    overflow-x: auto;
+  }
+  .h2hTable th,
+  .h2hTable td {
+    white-space: nowrap;
+  }
+}

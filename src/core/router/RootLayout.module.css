@@ -1,6 +1,7 @@
 .shell {
   display: flex;
   min-height: 100vh;
+  position: relative;
 }
 
 .main {
@@ -17,6 +18,14 @@
   animation: fadeIn 200ms ease both;
 }
 
+.mobileOverlay {
+  position: fixed;
+  inset: 0;
+  border: none;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 30;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -26,11 +35,20 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .shell {
     flex-direction: column;
   }
   .content {
     padding: var(--space-4);
+  }
+  .mobileOverlay {
+    display: block;
+  }
+}
+
+@media (max-width: 640px) {
+  .content {
+    padding: var(--space-3);
   }
 }

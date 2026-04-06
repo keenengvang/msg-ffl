@@ -93,3 +93,42 @@
   text-align: center;
   padding: var(--space-8);
 }
+
+@media (max-width: 1024px) {
+  .sub {
+    font-size: 16px;
+  }
+  .board {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 10px;
+  }
+  .boardCard {
+    padding: var(--space-1);
+  }
+  .teamHeader {
+    max-width: 60px;
+  }
+}
+
+@media (max-width: 640px) {
+  .sub {
+    font-size: 14px;
+  }
+  .board {
+    font-size: 11px;
+  }
+  .playerName {
+    font-size: 12px;
+  }
+  .team {
+    font-size: 6px;
+  }
+  .empty {
+    font-size: 16px;
+  }
+}

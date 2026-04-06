@@ -49,6 +49,7 @@
     opacity: 1;
     box-shadow: 0 0 4px var(--color-accent-pink);
   }
+
   50% {
     opacity: 0.4;
     box-shadow: none;
@@ -59,6 +60,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-4);
+  flex-wrap: wrap;
 }
 
 .season {
@@ -66,4 +68,75 @@
   font-size: 8px;
   color: var(--color-text-muted);
   letter-spacing: 0.08em;
+}
+
+.menuButton {
+  margin-right: var(--space-4);
+  width: 40px;
+  height: 40px;
+  border: var(--border-pixel);
+  background: var(--color-bg-card);
+  color: var(--color-text-primary);
+  font-size: 20px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuButton:focus-visible {
+  outline: 2px solid var(--color-accent-cyan);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1024px) {
+  .topbar {
+    padding: 0 var(--space-4);
+    gap: var(--space-3);
+  }
+
+  .menuButton {
+    display: inline-flex;
+  }
+
+  .left {
+    flex: 1;
+  }
+
+  .right {
+    font-size: 12px;
+    gap: var(--space-2);
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    flex-wrap: wrap;
+    padding: var(--space-2);
+  }
+
+  .left {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .right {
+    display: none;
+  }
+
+  .season {
+    font-size: 7px;
+    letter-spacing: 0.05em;
+  }
+
+  .menuButton {
+    order: -1;
+    margin-right: var(--space-2);
+  }
+}
+
+@media (max-width: 420px) {
+  .season {
+    font-size: 6.5px;
+  }
 }

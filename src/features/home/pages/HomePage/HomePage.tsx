@@ -106,47 +106,49 @@ export function HomePage() {
         {/* Standings */}
         <PixelCard className={styles.standingsCard}>
           <h2 className={styles.cardTitle}>📊 STANDINGS</h2>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Team</th>
-                <th>W-L</th>
-                <th>PF</th>
-              </tr>
-            </thead>
-            <tbody>
-              {top6.map((p, i) => (
-                <tr key={p.rosterId} className={styles.playoffRow}>
-                  <td className={styles.rank}>{i === 0 ? '👑' : i === 1 ? '🥈' : i === 2 ? '🥉' : `${i + 1}`}</td>
-                  <td>
-                    <Link to={`/manager/${p.rosterId}`} className={styles.teamLink}>
-                      <AvatarPixel src={p.avatarUrl} name={p.displayName} size="sm" />
-                      <span>{p.teamName}</span>
-                    </Link>
-                  </td>
-                  <td className={styles.record}>{formatRecord(p.wins, p.losses)}</td>
-                  <td className={styles.pts}>{formatPoints(p.pointsFor)}</td>
+          <div className={styles.tableWrap}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Team</th>
+                  <th>W-L</th>
+                  <th>PF</th>
                 </tr>
-              ))}
-              <tr className={styles.cutline}>
-                <td colSpan={4}>── PLAYOFF CUTLINE ──</td>
-              </tr>
-              {bottom.map((p, i) => (
-                <tr key={p.rosterId}>
-                  <td className={styles.rank}>{top6.length + i + 1}</td>
-                  <td>
-                    <Link to={`/manager/${p.rosterId}`} className={styles.teamLink}>
-                      <AvatarPixel src={p.avatarUrl} name={p.displayName} size="sm" />
-                      <span>{p.teamName}</span>
-                    </Link>
-                  </td>
-                  <td className={styles.record}>{formatRecord(p.wins, p.losses)}</td>
-                  <td className={styles.pts}>{formatPoints(p.pointsFor)}</td>
+              </thead>
+              <tbody>
+                {top6.map((p, i) => (
+                  <tr key={p.rosterId} className={styles.playoffRow}>
+                    <td className={styles.rank}>{i === 0 ? '👑' : i === 1 ? '🥈' : i === 2 ? '🥉' : `${i + 1}`}</td>
+                    <td>
+                      <Link to={`/manager/${p.rosterId}`} className={styles.teamLink}>
+                        <AvatarPixel src={p.avatarUrl} name={p.displayName} size="sm" />
+                        <span>{p.teamName}</span>
+                      </Link>
+                    </td>
+                    <td className={styles.record}>{formatRecord(p.wins, p.losses)}</td>
+                    <td className={styles.pts}>{formatPoints(p.pointsFor)}</td>
+                  </tr>
+                ))}
+                <tr className={styles.cutline}>
+                  <td colSpan={4}>── PLAYOFF CUTLINE ──</td>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+                {bottom.map((p, i) => (
+                  <tr key={p.rosterId}>
+                    <td className={styles.rank}>{top6.length + i + 1}</td>
+                    <td>
+                      <Link to={`/manager/${p.rosterId}`} className={styles.teamLink}>
+                        <AvatarPixel src={p.avatarUrl} name={p.displayName} size="sm" />
+                        <span>{p.teamName}</span>
+                      </Link>
+                    </td>
+                    <td className={styles.record}>{formatRecord(p.wins, p.losses)}</td>
+                    <td className={styles.pts}>{formatPoints(p.pointsFor)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
           <Link to="/standings" className={styles.viewAll}>
             VIEW FULL STANDINGS →
           </Link>

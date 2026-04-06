@@ -57,3 +57,23 @@
 .crown {
   font-size: 14px;
 }
+
+@media (max-width: 640px) {
+  .side {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .teamName {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .match {
+    font-size: 14px;
+  }
+  .tbdAvatar {
+    width: 28px;
+    height: 28px;
+  }
+}

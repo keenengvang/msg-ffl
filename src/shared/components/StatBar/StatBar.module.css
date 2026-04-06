@@ -35,3 +35,21 @@
   min-width: 50px;
   text-align: right;
 }
+
+@media (max-width: 640px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+  }
+  .label {
+    min-width: auto;
+  }
+  .value {
+    text-align: left;
+    min-width: auto;
+  }
+  .track {
+    width: 100%;
+  }
+}

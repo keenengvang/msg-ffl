@@ -154,3 +154,46 @@
   font-size: 7px;
   color: var(--color-text-muted);
 }
+
+@media (max-width: 1024px) {
+  .title {
+    font-size: 10px;
+  }
+  .trophyInner {
+    padding: var(--space-3);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+  .badge {
+    flex-direction: column;
+  }
+  .badgeIcon {
+    font-size: 40px;
+  }
+  .badgeDesc {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 9px;
+  }
+  .filters {
+    flex-direction: column;
+  }
+  .filter {
+    width: 100%;
+    text-align: center;
+  }
+  .champManager {
+    font-size: 16px;
+  }
+  .earner {
+    font-size: 12px;
+  }
+}

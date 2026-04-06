@@ -71,3 +71,15 @@
     opacity: 0;
   }
 }
+
+@media (max-width: 640px) {
+  .wrapper {
+    padding: var(--space-6);
+  }
+  .message {
+    font-size: 10px;
+  }
+  .spinner {
+    gap: var(--space-1);
+  }
+}

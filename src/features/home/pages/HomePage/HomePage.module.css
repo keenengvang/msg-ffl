@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: var(--space-6);
   padding-top: 0;
-  margin: calc(-1 * var(--space-6));
+  margin: 0;
 }
 
 .grid {
@@ -37,6 +37,11 @@
   color: var(--color-accent-cyan);
   margin-bottom: var(--space-4);
   letter-spacing: 0.08em;
+}
+
+.tableWrap {
+  width: 100%;
+  overflow-x: auto;
 }
 
 /* Standings table */
@@ -234,5 +239,37 @@
   }
   .links {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    padding: var(--space-4) var(--space-3);
+    gap: var(--space-3);
+  }
+  .table {
+    font-size: 16px;
+  }
+  .powerRow {
+    flex-wrap: wrap;
+  }
+  .links {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    padding: var(--space-3) var(--space-2);
+  }
+  .cardTitle {
+    font-size: 8px;
+  }
+  .stat {
+    flex-direction: column;
+  }
+  .teamLink {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

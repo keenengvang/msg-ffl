@@ -18,6 +18,8 @@ body {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   font-family: var(--font-body);
+  font-size: clamp(0.95rem, 0.6vw + 0.8rem, 1.05rem);
+  line-height: 1.5;
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -43,6 +45,7 @@ button {
 img {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
 /* Pixel scrollbar */
@@ -76,4 +79,15 @@ img {
 .retro-text {
   font-family: var(--font-retro);
   letter-spacing: 0.02em;
+}
+
+.visuallyHidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }

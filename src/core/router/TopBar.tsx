@@ -3,14 +3,26 @@ import styles from './TopBar.module.css'
 
 interface Props {
   leagueName?: string
+  onMenuToggle?: () => void
+  isMenuOpen?: boolean
 }
 
-export function TopBar({ leagueName = 'MSG FFL' }: Props) {
+export function TopBar({ leagueName = 'MSG FFL', onMenuToggle, isMenuOpen = false }: Props) {
   const { data: state } = useNflState()
   const isLive = state?.season_type === 'regular' || state?.season_type === 'post'
 
   return (
     <header className={styles.topbar}>
+      {onMenuToggle && (
+        <button
+          type="button"
+          className={styles.menuButton}
+          onClick={onMenuToggle}
+          aria-label={isMenuOpen ? 'Close navigation' : 'Open navigation'}
+        >
+          {isMenuOpen ? '✕' : '☰'}
+        </button>
+      )}
       <div className={styles.left}>
         <h1 className={styles.title}>{leagueName}</h1>
         {state && (
