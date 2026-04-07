@@ -140,10 +140,10 @@ export function ManagerPage() {
           <table className={styles.h2hTable}>
             <thead>
               <tr>
-                <th>Opponent</th>
-                <th>W</th>
-                <th>L</th>
-                <th>PF</th>
+                <th className={styles.h2hHeader}>Opponent</th>
+                <th className={styles.h2hHeader}>W</th>
+                <th className={styles.h2hHeader}>L</th>
+                <th className={styles.h2hHeader}>PF</th>
               </tr>
             </thead>
             <tbody>

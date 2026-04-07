@@ -10,7 +10,7 @@ export interface SleeperTransaction {
   transaction_id: string
   type: 'waiver' | 'free_agent' | 'trade' | 'commissioner'
   status: 'complete' | 'failed' | 'pending'
-  roster_ids: number[]
+  roster_ids?: number[]
   creator: string
   created: number
   status_updated: number

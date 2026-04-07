@@ -4,54 +4,56 @@ import userEvent from '@testing-library/user-event'
 import { PixelCard } from './PixelCard'
 
 describe('PixelCard', () => {
-  it('renders children', () => {
-    render(<PixelCard>Hello World</PixelCard>)
+  it('renders children plus header/footer', () => {
+    render(
+      <PixelCard header="Top" footer="Bottom">
+        Hello World
+      </PixelCard>,
+    )
+
+    expect(screen.getByText('Top')).toBeInTheDocument()
     expect(screen.getByText('Hello World')).toBeInTheDocument()
+    expect(screen.getByText('Bottom')).toBeInTheDocument()
   })
 
-  it('applies variant class', () => {
-    const { container } = render(<PixelCard variant="highlight">Content</PixelCard>)
-    expect(container.firstChild).toHaveClass('highlight')
+  it('exposes variant via data attribute', () => {
+    const { container } = render(<PixelCard variant="warning">Content</PixelCard>)
+    expect(container.firstChild).toHaveAttribute('data-variant', 'warning')
   })
 
-  it('defaults to "default" variant', () => {
-    const { container } = render(<PixelCard>Content</PixelCard>)
-    expect(container.firstChild).toHaveClass('default')
+  it('maps legacy variants to retro equivalents', () => {
+    const { container } = render(<PixelCard variant="win">Content</PixelCard>)
+    expect(container.firstChild).toHaveAttribute('data-variant', 'success')
   })
 
-  it('applies custom className', () => {
-    const { container } = render(<PixelCard className="my-class">Content</PixelCard>)
-    expect(container.firstChild).toHaveClass('my-class')
-  })
-
-  it('applies custom style', () => {
-    const { container } = render(<PixelCard style={{ color: 'red' }}>Content</PixelCard>)
+  it('applies custom className and style props', () => {
+    const { container } = render(
+      <PixelCard className="my-card" style={{ color: 'red' }}>
+        Content
+      </PixelCard>,
+    )
+    expect(container.firstChild).toHaveClass('my-card')
     expect(container.firstChild).toHaveStyle({ color: 'rgb(255, 0, 0)' })
   })
 
-  it('adds button role and tabIndex when onClick is provided', () => {
-    const handleClick = vi.fn()
-    const { container } = render(<PixelCard onClick={handleClick}>Clickable</PixelCard>)
-    const card = container.firstChild as HTMLElement
-
-    expect(card).toHaveAttribute('role', 'button')
-    expect(card).toHaveAttribute('tabindex', '0')
-  })
-
-  it('does not add button role without onClick', () => {
-    const { container } = render(<PixelCard>Static</PixelCard>)
-    const card = container.firstChild as HTMLElement
-
-    expect(card).not.toHaveAttribute('role')
-    expect(card).not.toHaveAttribute('tabindex')
-  })
-
-  it('calls onClick handler when clicked', async () => {
+  it('adds interactive semantics when onClick is provided', async () => {
     const user = userEvent.setup()
     const handleClick = vi.fn()
     render(<PixelCard onClick={handleClick}>Clickable</PixelCard>)
 
-    await user.click(screen.getByText('Clickable'))
-    expect(handleClick).toHaveBeenCalledOnce()
+    const card = screen.getByRole('button')
+    expect(card).toHaveAttribute('tabindex', '0')
+
+    await user.click(card)
+    expect(handleClick).toHaveBeenCalledTimes(1)
+
+    card.focus()
+    await user.keyboard('{Enter}')
+    expect(handleClick).toHaveBeenCalledTimes(2)
+  })
+
+  it('stays non-interactive without onClick', () => {
+    const { container } = render(<PixelCard>Static</PixelCard>)
+    expect(container.firstChild).not.toHaveAttribute('role')
   })
 })

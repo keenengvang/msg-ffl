@@ -1,4 +1,5 @@
-:root {
+:root,
+[data-theme='electric'] {
   /* Breakpoints */
   --bp-desktop: 1280px;
   --bp-laptop: 1100px;
@@ -8,56 +9,67 @@
   --bp-mobile-sm: 480px;
 
   /* Backgrounds */
-  --color-bg-primary: #0a0a0f;
-  --color-bg-secondary: #111118;
-  --color-bg-card: #1a1a2e;
-  --color-bg-card-hover: #16213e;
-  --color-bg-sidebar: #0d0d1a;
+  --color-bg-primary: #fdfbff;
+  --color-bg-secondary: #cbc9ff;
+  --color-bg-card: #ffffff;
+  --color-bg-card-hover: #ece9ff;
+  --color-bg-sidebar: #201c58;
+  --surface-noise:
+    radial-gradient(circle at 10% 12%, rgba(255, 79, 191, 0.3), transparent 40%),
+    radial-gradient(circle at 80% 5%, rgba(58, 92, 255, 0.4), transparent 50%);
 
   /* Borders */
-  --color-border: #0f3460;
-  --color-border-bright: #e94560;
-  --color-border-subtle: #1a2a4a;
+  --color-border: #120b27;
+  --color-border-bright: #6af2ff;
+  --color-border-subtle: rgba(18, 11, 39, 0.25);
 
   /* Text */
-  --color-text-primary: #e8f4fd;
-  --color-text-secondary: #90a4ae;
-  --color-text-accent: #00e5ff;
-  --color-text-muted: #546e7a;
+  --color-text-primary: #120b27;
+  --color-text-secondary: #281b45;
+  --color-text-accent: #3c5bff;
+  --color-text-muted: #6f5ca0;
 
   /* Accents */
-  --color-accent-cyan: #00e5ff;
-  --color-accent-pink: #e94560;
-  --color-accent-purple: #7c4dff;
+  --color-accent: #3c5bff;
+  --color-accent-strong: #ff4fbf;
+  --color-accent-dark: #ffc857;
+
+  /* Legacy accent aliases retained for compatibility. Remove once all features adopt Retro tokens. */
+  --color-accent-cyan: var(--color-accent);
+  --color-accent-pink: var(--color-accent-strong);
+  --color-accent-purple: var(--color-accent-dark);
+  --color-accent-lime: var(--color-accent-dark);
+
+  --color-muted: #dfe0ff;
+  --color-muted-strong: #b5b7ff;
 
   /* Rarity */
-  --color-common: #78909c;
-  --color-rare: #42a5f5;
-  --color-epic: #ab47bc;
-  --color-legendary: #ffa726;
+  --color-common: #6f6b65;
+  --color-rare: #0086ff;
+  --color-epic: #c03bff;
+  --color-legendary: #ff9d00;
 
   /* Game states */
-  --color-win: #00e676;
-  --color-loss: #ff5252;
-  --color-tie: #ffab40;
+  --color-win: #64f5c4;
+  --color-loss: #ff6b8a;
+  --color-tie: #ffb347;
 
   /* Ranks */
-  --color-rank-1: #ffd700;
-  --color-rank-2: #c0c0c0;
-  --color-rank-3: #cd7f32;
+  --color-rank-1: #ffc857;
+  --color-rank-2: #6af2ff;
+  --color-rank-3: #ff9ad5;
 
   /* Positions */
-  --color-pos-qb: #ef5350;
-  --color-pos-rb: #66bb6a;
-  --color-pos-wr: #42a5f5;
-  --color-pos-te: #ffa726;
-  --color-pos-k: #ab47bc;
-  --color-pos-def: #78909c;
+  --color-pos-qb: #ff6f3c;
+  --color-pos-rb: #00a676;
+  --color-pos-wr: #0067ff;
+  --color-pos-te: #f25f5c;
+  --color-pos-k: #7b4bff;
+  --color-pos-def: #22223b;
 
   /* Fonts */
-  --font-pixel: 'Press Start 2P', monospace;
-  --font-retro: 'VT323', monospace;
-  --font-body: system-ui, -apple-system, sans-serif;
+  --font-display: 'Archivo Black', 'Archivo', 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Space Grotesk', system-ui, -apple-system, sans-serif;
 
   /* Spacing */
   --space-1: 4px;
@@ -71,25 +83,113 @@
   --space-12: 48px;
   --space-16: 64px;
 
+  /* Retro spacing aliases */
+  --retro-space-1: var(--space-1);
+  --retro-space-2: var(--space-2);
+  --retro-space-3: var(--space-3);
+  --retro-space-4: var(--space-4);
+  --retro-space-5: var(--space-5);
+  --retro-space-6: var(--space-6);
+  --retro-space-8: var(--space-8);
+  --retro-space-10: var(--space-10);
+  --retro-space-12: var(--space-12);
+  --retro-space-16: var(--space-16);
+
   /* Layout */
-  --sidebar-width: 220px;
+  --sidebar-width: 300px;
   --topbar-height: 56px;
 
   /* Shadows / Glow */
-  --shadow-pixel: 4px 4px 0px rgba(0, 0, 0, 0.8);
-  --shadow-pixel-sm: 2px 2px 0px rgba(0, 0, 0, 0.8);
-  --shadow-pixel-inset: inset 2px 2px 0px rgba(255, 255, 255, 0.05);
-  --glow-cyan: 0 0 12px rgba(0, 229, 255, 0.4);
-  --glow-gold: 0 0 12px rgba(255, 215, 0, 0.5);
-  --glow-pink: 0 0 12px rgba(233, 69, 96, 0.4);
-  --glow-green: 0 0 12px rgba(0, 230, 118, 0.4);
+  --shadow-retro-xs: 1px 1px 0 #000;
+  --shadow-retro-sm: 2px 2px 0 #000;
+  --shadow-retro-md: 4px 4px 0 #000;
+  --shadow-retro-lg: 6px 6px 0 #000;
+  --shadow-retro-xl: 10px 10px 0 rgba(0, 0, 0, 0.9);
+  --shadow-retro-2xl: 16px 16px 24px rgba(0, 0, 0, 0.35);
+
+  /* Legacy shadow/glow tokens kept until all consumers move to Retro equivalents */
+  --shadow-pixel: var(--shadow-retro-md);
+  --shadow-pixel-sm: var(--shadow-retro-sm);
+  --shadow-pixel-inset: inset 2px 2px 0 rgba(255, 255, 255, 0.05);
+  --shadow-brutal: var(--shadow-retro-lg);
+  --shadow-brutal-hover: var(--shadow-retro-sm);
+  --shadow-brutal-lg: var(--shadow-retro-xl);
+  --glow-cyan: 0 0 12px rgba(250, 229, 131, 0.4);
+  --glow-gold: 0 0 12px rgba(255, 219, 51, 0.45);
+  --glow-pink: 0 0 12px rgba(255, 109, 90, 0.4);
+  --glow-green: 0 0 12px rgba(0, 166, 118, 0.35);
 
   /* Borders (shorthand) */
   --border-pixel: 2px solid var(--color-border);
   --border-pixel-bright: 2px solid var(--color-border-bright);
-  --border-pixel-accent: 2px solid var(--color-accent-cyan);
+  --border-pixel-accent: 2px solid var(--color-accent);
 
   /* Transitions */
-  --transition-fast: 80ms ease;
-  --transition-base: 150ms ease;
+  --retro-transition-fast: 90ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  --retro-transition-base: 160ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition-fast: var(--retro-transition-fast);
+  --transition-base: var(--retro-transition-base);
+  --transition-slow: 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+[data-theme='bubblegum'] {
+  --color-bg-primary: #fffafc;
+  --color-bg-secondary: #fcd9ff;
+  --color-bg-card: #ffffff;
+  --color-bg-card-hover: #ffeef8;
+  --color-bg-sidebar: #f4b5ff;
+  --surface-noise:
+    radial-gradient(circle at 10% 12%, rgba(255, 111, 177, 0.25), transparent 45%),
+    radial-gradient(circle at 80% 5%, rgba(121, 197, 255, 0.25), transparent 55%);
+
+  --color-border: #1b1035;
+  --color-border-bright: #7ef0c9;
+  --color-border-subtle: rgba(27, 16, 53, 0.25);
+
+  --color-text-primary: #1b1035;
+  --color-text-secondary: #2d1b52;
+  --color-text-accent: #ff6fb1;
+  --color-text-muted: #675586;
+
+  --color-accent: #ff6fb1;
+  --color-accent-strong: #79c5ff;
+  --color-accent-dark: #ffd285;
+
+  --color-muted: #f2e3ff;
+  --color-muted-strong: #e5d0ff;
+
+  --color-win: #7ef0c9;
+  --color-loss: #ff7f9d;
+  --color-tie: #ffcf70;
+}
+
+[data-theme='cosmic'] {
+  --color-bg-primary: #281f4f;
+  --color-bg-secondary: #1f1d63;
+  --color-bg-card: #342c68;
+  --color-bg-card-hover: #3f3781;
+  --color-bg-sidebar: #0d0826;
+  --surface-noise:
+    radial-gradient(circle at 15% 15%, rgba(244, 95, 164, 0.25), transparent 55%),
+    radial-gradient(circle at 75% 10%, rgba(156, 246, 246, 0.25), transparent 60%);
+
+  --color-border: #090414;
+  --color-border-bright: #9cf6f6;
+  --color-border-subtle: rgba(247, 245, 255, 0.2);
+
+  --color-text-primary: #f7f5ff;
+  --color-text-secondary: #d1c8ff;
+  --color-text-accent: #9cf6f6;
+  --color-text-muted: #a9a0d7;
+
+  --color-accent: #9cf6f6;
+  --color-accent-strong: #f45fa4;
+  --color-accent-dark: #ffd66c;
+
+  --color-muted: #31285b;
+  --color-muted-strong: #3c3172;
+
+  --color-win: #76ffaa;
+  --color-loss: #ff8ea2;
+  --color-tie: #ff956c;
 }

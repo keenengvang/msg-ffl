@@ -32,7 +32,7 @@
 }
 
 .cardTitle {
-  font-family: var(--font-pixel);
+  composes: section-heading from global;
   font-size: 10px;
   color: var(--color-accent-cyan);
   margin-bottom: var(--space-4);
@@ -48,13 +48,12 @@
 .table {
   width: 100%;
   border-collapse: collapse;
-  font-family: var(--font-retro);
+  font-family: var(--font-body);
   font-size: 18px;
 }
 
 .table th {
-  font-family: var(--font-pixel);
-  font-size: 7px;
+  font-size: 0.65rem;
   color: var(--color-text-muted);
   text-align: left;
   padding: var(--space-1) var(--space-2);
@@ -71,18 +70,21 @@
   color: var(--color-win);
 }
 
-.cutline td {
-  font-family: var(--font-pixel);
-  font-size: 6px;
+.cutline {
+  composes: stat-label from global;
+  font-size: 0.55rem;
   color: var(--color-accent-pink);
   text-align: center;
-  padding: var(--space-1) 0;
   opacity: 0.7;
 }
 
+.cutline td {
+  padding: var(--space-1) 0;
+}
+
 .rank {
-  font-family: var(--font-pixel);
-  font-size: 8px;
+  composes: stat-label from global;
+  font-size: 0.55rem;
   text-align: center;
   width: 28px;
 }
@@ -108,9 +110,9 @@
 }
 
 .viewAll {
+  composes: stat-label from global;
   display: block;
-  font-family: var(--font-pixel);
-  font-size: 7px;
+  font-size: 0.55rem;
   color: var(--color-accent-cyan);
   margin-top: var(--space-4);
   text-align: right;
@@ -142,21 +144,21 @@
 }
 
 .powerRank {
-  font-family: var(--font-pixel);
-  font-size: 7px;
+  composes: stat-label from global;
+  font-size: 0.5rem;
   color: var(--color-text-muted);
   min-width: 28px;
 }
 
 .powerName {
   flex: 1;
-  font-family: var(--font-retro);
+  composes: body-copy from global;
   font-size: 18px;
 }
 
 .powerScore {
-  font-family: var(--font-pixel);
-  font-size: 8px;
+  composes: stat-value from global;
+  font-size: 0.6rem;
   color: var(--color-legendary);
 }
 
@@ -184,20 +186,20 @@
 }
 
 .statLabel {
-  font-family: var(--font-pixel);
-  font-size: 7px;
+  composes: stat-label from global;
+  font-size: 0.55rem;
   color: var(--color-text-muted);
   margin-bottom: 2px;
 }
 
 .statValue {
-  font-family: var(--font-retro);
+  composes: stat-value from global;
   font-size: 22px;
   color: var(--color-text-accent);
 }
 
 .statSub {
-  font-family: var(--font-retro);
+  composes: body-copy from global;
   font-size: 14px;
   color: var(--color-text-secondary);
 }
@@ -210,9 +212,9 @@
 }
 
 .quickLink {
+  composes: stat-label from global;
   display: block;
-  font-family: var(--font-pixel);
-  font-size: 8px;
+  font-size: 0.5rem;
   color: var(--color-text-secondary);
   padding: var(--space-3);
   border: var(--border-pixel);

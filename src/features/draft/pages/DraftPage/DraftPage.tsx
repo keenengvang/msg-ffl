@@ -20,7 +20,7 @@ export function DraftPage() {
     error: picksError,
     refetch: refetchPicks,
   } = useDraftPicks(latestDraft?.draft_id)
-  const allPicks = picks ?? []
+  const allPicks = useMemo(() => picks ?? [], [picks])
 
   const rosterMap = useMemo(() => {
     if (!latestDraft) return {}

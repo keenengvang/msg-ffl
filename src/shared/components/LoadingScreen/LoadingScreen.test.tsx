@@ -5,7 +5,7 @@ import { LoadingScreen } from './LoadingScreen'
 describe('LoadingScreen', () => {
   it('renders with default message', () => {
     render(<LoadingScreen />)
-    expect(screen.getByText('LOADING...')).toBeInTheDocument()
+    expect(screen.getByText('Loading…')).toBeInTheDocument()
   })
 
   it('renders with custom message', () => {
@@ -13,9 +13,9 @@ describe('LoadingScreen', () => {
     expect(screen.getByText('LOADING STANDINGS...')).toBeInTheDocument()
   })
 
-  it('shows easter egg text', () => {
+  it('shows the default subtext tagline', () => {
     render(<LoadingScreen />)
-    expect(screen.getByText('INSERT COIN TO CONTINUE')).toBeInTheDocument()
+    expect(screen.getByText('Syncing stats & vibes')).toBeInTheDocument()
   })
 
   it('applies fullScreen class when prop is true', () => {
@@ -28,9 +28,9 @@ describe('LoadingScreen', () => {
     expect(container.firstChild).not.toHaveClass('fullScreen')
   })
 
-  it('renders three spinner dots', () => {
+  it('renders the retro spinner element', () => {
     const { container } = render(<LoadingScreen />)
-    const dots = container.querySelectorAll('.dot')
-    expect(dots).toHaveLength(3)
+    const spinner = container.querySelector('[data-role="retro-spinner"]')
+    expect(spinner).not.toBeNull()
   })
 })

@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 
-# Environment files 
+# Environment files
 .env
 .env.development
 .env.production
@@ -34,3 +34,4 @@ test-results/
 *.njsproj
 *.sln
 *.sw?
+.pnpm-store

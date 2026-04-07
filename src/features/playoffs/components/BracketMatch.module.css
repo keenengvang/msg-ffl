@@ -1,19 +1,20 @@
 .match {
   background: var(--color-bg-card);
-  border: var(--border-pixel);
-  box-shadow: var(--shadow-pixel);
+  border: 2px solid var(--color-border);
+  box-shadow: var(--shadow-retro-sm);
   overflow: hidden;
+  border-radius: var(--retro-space-2);
 }
 
 .matchComplete {
-  border-color: var(--color-accent-cyan);
+  border-color: var(--color-accent-strong);
 }
 
 .side {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-3);
+  gap: var(--retro-space-2);
+  padding: var(--retro-space-3);
   border-bottom: 1px solid var(--color-border-subtle);
 }
 
@@ -30,28 +31,29 @@
 }
 
 .tbdAvatar {
+  composes: stat-label from global;
   width: 32px;
   height: 32px;
   border: 2px solid var(--color-border);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-pixel);
-  font-size: 10px;
+  font-size: 0.75rem;
   color: var(--color-text-muted);
 }
 
 .teamName {
+  composes: stat-heading from global;
   flex: 1;
-  font-family: var(--font-retro);
-  font-size: 18px;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
   color: var(--color-text-primary);
 }
 
 .points {
-  font-family: var(--font-pixel);
-  font-size: 9px;
-  color: var(--color-accent-cyan);
+  composes: stat-value from global;
+  font-size: 0.75rem;
+  color: var(--color-accent-strong);
 }
 
 .crown {

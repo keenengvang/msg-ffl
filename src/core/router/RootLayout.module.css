@@ -9,30 +9,23 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  overflow-x: hidden;
 }
 
 .content {
   flex: 1;
-  padding: var(--space-6);
-  animation: fadeIn 200ms ease both;
+  padding: var(--retro-space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--retro-space-4);
 }
 
 .mobileOverlay {
   position: fixed;
   inset: 0;
   border: none;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 30;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 20;
+  cursor: pointer;
 }
 
 @media (max-width: 1024px) {
@@ -40,15 +33,16 @@
     flex-direction: column;
   }
   .content {
-    padding: var(--space-4);
+    padding: var(--retro-space-4);
   }
   .mobileOverlay {
-    display: block;
+    left: min(80vw, 340px);
+    width: calc(100% - min(80vw, 340px));
   }
 }
 
 @media (max-width: 640px) {
   .content {
-    padding: var(--space-3);
+    padding: var(--retro-space-3);
   }
 }

@@ -86,13 +86,13 @@ export function HistoryPage() {
             <table className={styles.table}>
               <thead>
                 <tr>
-                  <th>RANK</th>
-                  <th>TEAM</th>
-                  <th>MANAGER</th>
-                  <th>W-L</th>
-                  <th>PF</th>
-                  <th>PA</th>
-                  <th>PLAYOFFS</th>
+                  <th className="stat-heading">RANK</th>
+                  <th className="stat-heading">TEAM</th>
+                  <th className="stat-heading">MANAGER</th>
+                  <th className="stat-heading">W-L</th>
+                  <th className="stat-heading">PF</th>
+                  <th className="stat-heading">PA</th>
+                  <th className="stat-heading">PLAYOFFS</th>
                 </tr>
               </thead>
               <tbody>
@@ -127,12 +127,12 @@ export function HistoryPage() {
             <table className={styles.table}>
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>MANAGER</th>
-                  <th>SEASONS</th>
-                  <th>W-L</th>
-                  <th>TOTAL PF</th>
-                  <th>PLAYOFF APPS</th>
+                  <th className="stat-heading">#</th>
+                  <th className="stat-heading">MANAGER</th>
+                  <th className="stat-heading">SEASONS</th>
+                  <th className="stat-heading">W-L</th>
+                  <th className="stat-heading">TOTAL PF</th>
+                  <th className="stat-heading">PLAYOFF APPS</th>
                 </tr>
               </thead>
               <tbody>

@@ -3,7 +3,6 @@ const PERCENT_SCALE = 100
 const PERCENT_DECIMALS = 1
 const MINIMUM_STD_DEV_SAMPLE_SIZE = 2
 const ORDINAL_SUFFIXES = ['th', 'st', 'nd', 'rd'] as const
-const ORDINAL_TEENS_OFFSET = 20
 const ORDINAL_DIGIT_BASE = 10
 const ORDINAL_ROUNDING_WINDOW = 100
 
@@ -35,8 +34,15 @@ export function stdDev(values: number[]): number {
 }
 
 export function formatOrdinal(position: number): string {
-  const remainderHundred = position % ORDINAL_ROUNDING_WINDOW
-  const shiftedIndex = (remainderHundred - ORDINAL_TEENS_OFFSET + ORDINAL_DIGIT_BASE) % ORDINAL_DIGIT_BASE
-  const suffix = ORDINAL_SUFFIXES[shiftedIndex] ?? ORDINAL_SUFFIXES[remainderHundred] ?? ORDINAL_SUFFIXES[0]
+  const remainderHundred = Math.abs(position) % ORDINAL_ROUNDING_WINDOW
+  const remainderTen = remainderHundred % ORDINAL_DIGIT_BASE
+
+  const suffix =
+    remainderHundred >= 11 && remainderHundred <= 13
+      ? ORDINAL_SUFFIXES[0]
+      : remainderTen >= 1 && remainderTen <= 3
+        ? ORDINAL_SUFFIXES[remainderTen]
+        : ORDINAL_SUFFIXES[0]
+
   return `${position}${suffix}`
 }

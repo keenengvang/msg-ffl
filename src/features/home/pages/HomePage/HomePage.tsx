@@ -110,10 +110,10 @@ export function HomePage() {
             <table className={styles.table}>
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Team</th>
-                  <th>W-L</th>
-                  <th>PF</th>
+                  <th className="stat-heading">#</th>
+                  <th className="stat-heading">Team</th>
+                  <th className="stat-heading">W-L</th>
+                  <th className="stat-heading">PF</th>
                 </tr>
               </thead>
               <tbody>

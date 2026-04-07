@@ -16,7 +16,7 @@ export function RootLayout() {
   const closeMobileNav = () => setIsMobileNavOpen(false)
 
   return (
-    <div className={`${styles.shell} scanlines`}>
+    <div className={styles.shell}>
       <Sidebar isMobileOpen={isMobileNavOpen} onNavigate={closeMobileNav} />
       {isMobileNavOpen && (
         <button

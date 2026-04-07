@@ -12,6 +12,8 @@ max_depth = 1
 
 [projects."/Users/keeneng/Development/msg-ffl"]
 trust_level = "trusted"
+sandbox_mode = "workspace-write"
+approval_policy = "never"
 
 [mcp_servers.openai_docs]
 url = "https://developers.openai.com/mcp"
@@ -19,3 +21,7 @@ url = "https://developers.openai.com/mcp"
 [mcp_servers.context7]
 command = "npx"
 args = ["-y", "@upstash/context7-mcp"]
+
+[mcp_servers.playwright]
+command = "npx"
+args = ["@playwright/mcp@latest"]

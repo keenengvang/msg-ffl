@@ -10,21 +10,21 @@
 }
 
 .type {
-  font-family: var(--font-pixel);
-  font-size: 8px;
+  composes: stat-label from global;
+  font-size: 0.5rem;
   color: var(--color-text-primary);
 }
 
 .time {
-  font-family: var(--font-retro);
+  font-family: var(--font-body);
   font-size: 16px;
   color: var(--color-text-muted);
   margin-left: auto;
 }
 
 .bid {
-  font-family: var(--font-pixel);
-  font-size: 7px;
+  composes: stat-label from global;
+  font-size: 0.45rem;
   color: var(--color-legendary);
   border: 1px solid var(--color-legendary);
   padding: 2px 6px;
@@ -38,10 +38,10 @@
 }
 
 .team {
+  composes: body-copy from global;
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  font-family: var(--font-retro);
   font-size: 18px;
   color: var(--color-text-primary);
 }
@@ -61,29 +61,29 @@
 }
 
 .addTag {
-  font-family: var(--font-pixel);
-  font-size: 7px;
+  composes: stat-label from global;
+  font-size: 0.45rem;
   color: var(--color-win);
   border: 1px solid var(--color-win);
   padding: 1px 4px;
 }
 
 .dropTag {
-  font-family: var(--font-pixel);
-  font-size: 7px;
+  composes: stat-label from global;
+  font-size: 0.45rem;
   color: var(--color-loss);
   border: 1px solid var(--color-loss);
   padding: 1px 4px;
 }
 
 .playerName {
-  font-family: var(--font-retro);
+  composes: body-copy from global;
   font-size: 18px;
   color: var(--color-text-primary);
 }
 
 .toTeam {
-  font-family: var(--font-retro);
+  composes: body-copy from global;
   font-size: 16px;
   color: var(--color-text-secondary);
 }

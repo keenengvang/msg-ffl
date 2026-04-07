@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import logoImage from './assets/msgffl.png'
 import styles from './Sidebar.module.css'
 
 const NAV_ITEMS = [
@@ -25,8 +26,7 @@ export function Sidebar({ isMobileOpen = false, onNavigate }: SidebarProps) {
   return (
     <nav className={[styles.sidebar, isMobileOpen ? styles.sidebarOpen : ''].join(' ')}>
       <div className={styles.logo}>
-        <span className={styles.logoText}>MSG</span>
-        <span className={styles.logoSub}>FFL</span>
+        <img className={styles.logoImage} src={logoImage} alt="MSG Fantasy Football League" />
       </div>
       <button type="button" className={styles.closeButton} onClick={handleNavigate} aria-label="Close navigation">
         ✕

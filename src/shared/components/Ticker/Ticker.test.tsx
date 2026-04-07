@@ -13,17 +13,20 @@ describe('Ticker', () => {
     expect(screen.getByText('📡 LIVE')).toBeInTheDocument()
   })
 
-  it('renders ticker items', () => {
+  it('renders ticker items twice for seamless loop', () => {
     render(<Ticker items={['First item', 'Second item']} />)
-    // Items are duplicated for seamless loop, so each appears twice
     expect(screen.getAllByText('First item')).toHaveLength(2)
     expect(screen.getAllByText('Second item')).toHaveLength(2)
   })
 
-  it('duplicates items for seamless loop animation', () => {
+  it('exposes paused state via data attribute', () => {
+    const { container } = render(<Ticker items={['A']} paused />)
+    expect(container.firstChild).toHaveAttribute('data-paused', 'true')
+  })
+
+  it('duplicates items using data-role markers', () => {
     const { container } = render(<Ticker items={['A', 'B', 'C']} />)
-    const items = container.querySelectorAll('.item')
-    // 3 items * 2 (duplicated) = 6
+    const items = container.querySelectorAll('[data-role="ticker-item"]')
     expect(items).toHaveLength(6)
   })
 })

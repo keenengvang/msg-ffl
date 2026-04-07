@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: var(--space-8);
+  padding: var(--retro-space-8);
   background: var(--color-bg);
 }
 
@@ -14,37 +14,37 @@
 
 .glitch {
   font-size: 4rem;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--retro-space-4);
   animation: pulse 2s ease-in-out infinite;
 }
 
 .title {
-  font-family: var(--font-pixel);
+  composes: section-heading from global;
   font-size: 1.25rem;
   color: var(--color-accent-pink);
   text-shadow: var(--glow-pink);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--retro-space-4);
 }
 
 .message {
-  font-family: var(--font-retro);
+  font-family: var(--font-body);
   font-size: 1.125rem;
   color: var(--color-text-muted);
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--retro-space-8);
   line-height: 1.5;
 }
 
 .actions {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--retro-space-4);
   justify-content: center;
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--retro-space-8);
 }
 
 .btn {
-  font-family: var(--font-pixel);
+  composes: stat-label from global;
   font-size: 0.65rem;
-  padding: var(--space-3) var(--space-5);
+  padding: var(--retro-space-3) var(--retro-space-5);
   border: 2px solid var(--color-accent-cyan);
   background: transparent;
   color: var(--color-accent-cyan);
@@ -59,7 +59,7 @@
 }
 
 .sub {
-  font-family: var(--font-pixel);
+  composes: eyebrow from global;
   font-size: 0.55rem;
   color: var(--color-text-muted);
   letter-spacing: 0.1em;

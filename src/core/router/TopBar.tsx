@@ -1,4 +1,5 @@
 import { useNflState } from '@/shared/hooks/use-nfl-state'
+import { ThemeSwitcher } from '@/core/components/ThemeSwitcher/ThemeSwitcher'
 import styles from './TopBar.module.css'
 
 interface Props {
@@ -40,6 +41,7 @@ export function TopBar({ leagueName = 'MSG FFL', onMenuToggle, isMenuOpen = fals
       </div>
       <div className={styles.right}>
         <span className={styles.season}>{state?.season ?? '2024'} SEASON</span>
+        <ThemeSwitcher />
       </div>
     </header>
   )

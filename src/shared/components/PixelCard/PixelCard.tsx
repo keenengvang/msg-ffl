@@ -1,26 +1,62 @@
-import type { CSSProperties, ReactNode } from 'react'
+import type { CSSProperties, KeyboardEvent, ReactNode } from 'react'
+import clsx from 'clsx'
 import styles from './PixelCard.module.css'
 
-type Variant = 'default' | 'highlight' | 'danger' | 'legendary' | 'win' | 'loss'
+export type PixelCardVariant = 'default' | 'elevated' | 'warning' | 'success' | 'danger'
+type LegacyPixelCardVariant = 'highlight' | 'legendary' | 'win' | 'loss'
+type CombinedVariant = PixelCardVariant | LegacyPixelCardVariant
 
-interface Props {
+type PixelCardProps = {
   children: ReactNode
-  variant?: Variant
+  variant?: CombinedVariant
+  header?: ReactNode
+  footer?: ReactNode
   className?: string
   style?: CSSProperties
   onClick?: () => void
 }
 
-export function PixelCard({ children, variant = 'default', className = '', style, onClick }: Props) {
+const CLICK_KEYS = new Set(['Enter', ' ', 'Spacebar'])
+const LEGACY_VARIANT_MAP: Record<LegacyPixelCardVariant, PixelCardVariant> = {
+  highlight: 'elevated',
+  legendary: 'elevated',
+  win: 'success',
+  loss: 'danger',
+}
+
+export function PixelCard({
+  children,
+  variant = 'default',
+  header,
+  footer,
+  className,
+  style,
+  onClick,
+}: PixelCardProps) {
+  const isInteractive = typeof onClick === 'function'
+  const resolvedVariant = (LEGACY_VARIANT_MAP[variant as LegacyPixelCardVariant] ?? variant) as PixelCardVariant
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (!isInteractive) return
+    if (CLICK_KEYS.has(event.key)) {
+      event.preventDefault()
+      onClick?.()
+    }
+  }
+
   return (
     <div
-      className={[styles.card, styles[variant], onClick ? styles.clickable : '', className].join(' ')}
+      className={clsx(styles.card, styles[resolvedVariant], isInteractive && styles.clickable, className)}
       style={style}
+      role={isInteractive ? 'button' : undefined}
+      tabIndex={isInteractive ? 0 : undefined}
       onClick={onClick}
-      role={onClick ? 'button' : undefined}
-      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={handleKeyDown}
+      data-variant={resolvedVariant}
     >
-      {children}
+      {header ? <div className={styles.header}>{header}</div> : null}
+      <div className={styles.body}>{children}</div>
+      {footer ? <div className={styles.footer}>{footer}</div> : null}
     </div>
   )
 }

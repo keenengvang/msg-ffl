@@ -4,7 +4,7 @@
   gap: var(--space-4);
 }
 .title {
-  font-family: var(--font-pixel);
+  composes: section-heading from global;
   font-size: 12px;
   color: var(--color-legendary);
   text-shadow: var(--glow-gold);
@@ -33,19 +33,19 @@
   }
 }
 .champLabel {
-  font-family: var(--font-pixel);
-  font-size: 8px;
+  composes: stat-label from global;
+  font-size: 0.5rem;
   color: var(--color-legendary);
   letter-spacing: 0.15em;
 }
 .champName {
-  font-family: var(--font-pixel);
+  font-family: var(--font-display);
   font-size: 14px;
   color: var(--color-text-primary);
   margin-top: var(--space-2);
 }
 .bracketTitle {
-  font-family: var(--font-pixel);
+  font-family: var(--font-display);
   font-size: 10px;
   color: var(--color-accent-cyan);
 }
@@ -65,8 +65,8 @@
   min-width: 220px;
 }
 .roundLabel {
-  font-family: var(--font-pixel);
-  font-size: 7px;
+  composes: stat-label from global;
+  font-size: 0.45rem;
   color: var(--color-text-muted);
   margin-bottom: var(--space-2);
 }

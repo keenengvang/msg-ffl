@@ -4,7 +4,7 @@
   gap: var(--space-4);
 }
 .title {
-  font-family: var(--font-pixel);
+  composes: section-heading from global;
   font-size: 12px;
   color: var(--color-accent-cyan);
 }
@@ -14,7 +14,7 @@
   flex-wrap: wrap;
 }
 .tab {
-  font-family: var(--font-pixel);
+  composes: section-heading from global;
   font-size: 9px;
   color: var(--color-text-secondary);
   border: var(--border-pixel);
@@ -29,13 +29,13 @@
   border-color: var(--color-accent-cyan) !important;
 }
 .sectionTitle {
-  font-family: var(--font-pixel);
+  composes: section-heading from global;
   font-size: 9px;
   color: var(--color-accent-cyan);
   margin-bottom: var(--space-4);
 }
 .champion {
-  font-family: var(--font-pixel);
+  composes: section-heading from global;
   font-size: 12px;
   color: var(--color-legendary);
   margin-bottom: var(--space-4);
@@ -44,12 +44,11 @@
 .table {
   width: 100%;
   border-collapse: collapse;
-  font-family: var(--font-retro);
+  font-family: var(--font-body);
   font-size: 18px;
 }
 .table th {
-  font-family: var(--font-pixel);
-  font-size: 7px;
+  font-size: 0.6rem;
   color: var(--color-text-muted);
   text-align: left;
   padding: var(--space-1) var(--space-2);
@@ -66,8 +65,8 @@
   border-left: 3px solid var(--color-win);
 }
 .rank {
-  font-family: var(--font-pixel);
-  font-size: 8px;
+  composes: stat-label from global;
+  font-size: 0.5rem;
   color: var(--color-text-muted);
   padding: var(--space-2);
 }
@@ -94,15 +93,18 @@
   color: var(--color-text-secondary);
   padding: var(--space-2);
 }
+.inPlayoffs,
+.outPlayoffs {
+  composes: stat-label from global;
+  font-size: 0.5rem;
+}
+
 .inPlayoffs {
   color: var(--color-win);
-  font-family: var(--font-pixel);
-  font-size: 8px;
 }
+
 .outPlayoffs {
   color: var(--color-loss);
-  font-family: var(--font-pixel);
-  font-size: 8px;
 }
 
 @media (max-width: 1024px) {

@@ -1,0 +1,11 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="presentation" aria-hidden="true">
+  <defs>
+    <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="1.6" fill="currentColor" fill-opacity="0.35" />
+      <circle cx="12" cy="12" r="1.6" fill="currentColor" fill-opacity="0.35" />
+    </pattern>
+  </defs>
+  <rect width="64" height="64" fill="url(#dots)" />
+  <path d="M0 0h64M0 16h64M0 32h64M0 48h64M0 64h64" stroke="currentColor" stroke-width="1" stroke-opacity="0.15" />
+  <path d="M0 0v64M16 0v64M32 0v64M48 0v64M64 0v64" stroke="currentColor" stroke-width="1" stroke-opacity="0.08" />
+</svg>

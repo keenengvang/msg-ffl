@@ -69,7 +69,9 @@ export function MatchupsPage() {
             ].join(' ')}
             onClick={() => goToWeek(i + 1)}
             title={`Week ${i + 1}`}
-          />
+          >
+            {i + 1}
+          </button>
         ))}
       </div>
 

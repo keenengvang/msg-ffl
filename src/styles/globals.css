@@ -24,6 +24,76 @@ body {
   overflow-x: hidden;
 }
 
+/* Typography utilities */
+.display-heading {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  line-height: 1.1;
+}
+
+.section-heading {
+  font-family: 'Archivo', var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.body-copy {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.stat-label {
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.stat-heading {
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.stat-value {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-primary);
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 0.75rem;
+  color: var(--color-accent-strong);
+}
+
+.tagline {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+.focus-ring {
+  outline: 3px solid var(--color-accent-strong);
+  outline-offset: 4px;
+}
+
 #root {
   min-height: 100vh;
   display: flex;
@@ -68,17 +138,6 @@ img {
 ::selection {
   background: var(--color-accent-cyan);
   color: var(--color-bg-primary);
-}
-
-/* Pixel text utility */
-.pixel-text {
-  font-family: var(--font-pixel);
-  letter-spacing: 0.05em;
-}
-
-.retro-text {
-  font-family: var(--font-retro);
-  letter-spacing: 0.02em;
 }
 
 .visuallyHidden {

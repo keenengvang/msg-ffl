@@ -5,7 +5,7 @@
 }
 
 .title {
-  font-family: var(--font-pixel);
+  composes: section-heading from global;
   font-size: 12px;
   color: var(--color-legendary);
   text-shadow: var(--glow-gold);
@@ -35,19 +35,19 @@
   }
 }
 .champLabel {
-  font-family: var(--font-pixel);
-  font-size: 8px;
+  composes: stat-label from global;
+  font-size: 0.5rem;
   color: var(--color-legendary);
   letter-spacing: 0.15em;
 }
 .champName {
-  font-family: var(--font-pixel);
+  font-family: var(--font-display);
   font-size: 14px;
   color: var(--color-text-primary);
   margin-top: var(--space-2);
 }
 .champManager {
-  font-family: var(--font-retro);
+  font-family: var(--font-body);
   font-size: 20px;
   color: var(--color-text-secondary);
 }
@@ -58,8 +58,8 @@
   flex-wrap: wrap;
 }
 .filter {
-  font-family: var(--font-pixel);
-  font-size: 7px;
+  composes: stat-label from global;
+  font-size: 0.5rem;
   color: var(--color-text-secondary);
   border: var(--border-pixel);
   padding: var(--space-2) var(--space-3);
@@ -112,13 +112,13 @@
 }
 
 .badgeName {
-  font-family: var(--font-pixel);
+  composes: section-heading from global;
   font-size: 8px;
   color: var(--color-text-primary);
 }
 
 .badgeDesc {
-  font-family: var(--font-retro);
+  font-family: var(--font-body);
   font-size: 16px;
   color: var(--color-text-secondary);
   margin-bottom: var(--space-2);
@@ -134,24 +134,25 @@
   align-items: center;
   gap: var(--space-2);
   flex-wrap: wrap;
-  font-family: var(--font-retro);
+  font-family: var(--font-body);
   font-size: 14px;
   color: var(--color-text-primary);
 }
 .earnerWeek {
-  font-family: var(--font-pixel);
-  font-size: 6px;
+  composes: stat-label from global;
+  font-size: 0.4rem;
   color: var(--color-text-muted);
 }
+
 .earnerDetail {
-  font-family: var(--font-pixel);
-  font-size: 6px;
+  composes: stat-label from global;
+  font-size: 0.4rem;
   color: var(--color-accent-cyan);
 }
 
 .locked {
-  font-family: var(--font-pixel);
-  font-size: 7px;
+  composes: stat-label from global;
+  font-size: 0.45rem;
   color: var(--color-text-muted);
 }
 
