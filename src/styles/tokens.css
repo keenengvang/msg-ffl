@@ -50,7 +50,7 @@
   --color-legendary: #ff9d00;
 
   /* Game states */
-  --color-win: #64f5c4;
+  --color-win: #007651;
   --color-loss: #ff6b8a;
   --color-tie: #ffb347;
 
@@ -60,12 +60,12 @@
   --color-rank-3: #ff9ad5;
 
   /* Positions */
-  --color-pos-qb: #ff6f3c;
-  --color-pos-rb: #00a676;
-  --color-pos-wr: #0067ff;
-  --color-pos-te: #f25f5c;
-  --color-pos-k: #7b4bff;
-  --color-pos-def: #22223b;
+  --color-pos-qb: #ffd6c4;
+  --color-pos-rb: #bdf2d6;
+  --color-pos-wr: #c3d8ff;
+  --color-pos-te: #ffc9d6;
+  --color-pos-k: #d8c8ff;
+  --color-pos-def: #d2d8f0;
 
   /* Fonts */
   --font-display: 'Archivo Black', 'Archivo', 'Space Grotesk', system-ui, sans-serif;
@@ -158,7 +158,7 @@
   --color-muted: #f2e3ff;
   --color-muted-strong: #e5d0ff;
 
-  --color-win: #7ef0c9;
+  --color-win: #0a7a63;
   --color-loss: #ff7f9d;
   --color-tie: #ffcf70;
 }
@@ -189,7 +189,7 @@
   --color-muted: #31285b;
   --color-muted-strong: #3c3172;
 
-  --color-win: #76ffaa;
+  --color-win: #57ffa7;
   --color-loss: #ff8ea2;
   --color-tie: #ff956c;
 }

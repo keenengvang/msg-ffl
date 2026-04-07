@@ -43,7 +43,7 @@ export function ThemeSwitcher() {
         aria-expanded={open}
         onClick={() => setOpen((prev) => !prev)}
       >
-        Palette
+        Theme
       </button>
       {open ? (
         <div className={styles.dropdown} role="listbox">

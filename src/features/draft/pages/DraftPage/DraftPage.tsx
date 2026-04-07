@@ -1,4 +1,6 @@
-import { useMemo } from 'react'
+import { Fragment, useMemo, useRef, useState } from 'react'
+import type { PointerEvent } from 'react'
+import clsx from 'clsx'
 import { useDrafts, useDraftPicks } from '@/features/draft/hooks/use-draft'
 import { useManagerProfiles } from '@/shared/hooks/use-manager-profiles'
 import { usePlayers } from '@/shared/hooks/use-players'
@@ -7,6 +9,23 @@ import { LoadingScreen } from '@/shared/components/LoadingScreen/LoadingScreen'
 import { ErrorState } from '@/shared/components/ErrorState/ErrorState'
 import { POSITION_COLORS } from '@/shared/config/display'
 import styles from './DraftPage.module.css'
+
+function mixWithWhite(hex: string, weight = 0.75) {
+  if (!hex || typeof hex !== 'string' || !hex.startsWith('#')) return hex
+  const normalized = hex.length === 7 ? hex : `#${hex[1]}${hex[1]}${hex[2]}${hex[2]}${hex[3]}${hex[3]}`
+  const r = parseInt(normalized.slice(1, 3), 16)
+  const g = parseInt(normalized.slice(3, 5), 16)
+  const b = parseInt(normalized.slice(5, 7), 16)
+  const mixChannel = (channel: number) => Math.round(channel + (255 - channel) * weight)
+  return `rgb(${mixChannel(r)}, ${mixChannel(g)}, ${mixChannel(b)})`
+}
+
+function getPlayerHeadshotUrl(playerId?: string | null) {
+  if (!playerId) return null
+  const cleaned = playerId.replace(/[^0-9]/g, '')
+  if (!cleaned) return null
+  return `https://sleepercdn.com/content/nfl/players/${cleaned}.jpg`
+}
 
 export function DraftPage() {
   const { data: drafts, isLoading: draftsLoading, error: draftsError, refetch: refetchDrafts } = useDrafts()
@@ -49,15 +68,82 @@ export function DraftPage() {
 
   const profileByRosterId = useMemo(() => Object.fromEntries(profiles.map((p) => [p.rosterId, p])), [profiles])
 
-  // Map draft slots to managers via slot_to_roster_id
-  const slotHeaders = useMemo(() => {
-    return Array.from({ length: totalTeams }, (_, i) => {
-      const slot = i + 1
-      const rosterId = rosterMap[slot]
-      const profile = rosterId ? profileByRosterId[rosterId] : null
-      return profile?.teamName ?? `Slot ${slot}`
-    })
-  }, [totalTeams, rosterMap, profileByRosterId])
+  const slotMeta = useMemo(
+    () =>
+      Array.from({ length: totalTeams }, (_, i) => {
+        const slot = i + 1
+        const rosterId = rosterMap[slot]
+        const profile = rosterId ? profileByRosterId[rosterId] : null
+        const label = profile?.teamName ?? `Slot ${slot}`
+        const owner = profile?.displayName ?? 'Pending Owner'
+        const initials = label
+          .split(/\s+/)
+          .map((word) => word[0])
+          .filter(Boolean)
+          .slice(0, 2)
+          .join('')
+          .toUpperCase()
+        return {
+          slot,
+          profile,
+          label,
+          owner,
+          initials: initials || `S${slot}`,
+        }
+      }),
+    [profileByRosterId, rosterMap, totalTeams],
+  )
+
+  const boardSurfaceRef = useRef<HTMLDivElement>(null)
+  const dragState = useRef({
+    isDragging: false,
+    startX: 0,
+    startY: 0,
+    scrollLeft: 0,
+    scrollTop: 0,
+  })
+  const [isDragging, setIsDragging] = useState(false)
+
+  const handleDragStart = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.button && event.button !== 0) return
+
+    const container = boardSurfaceRef.current
+    if (!container) return
+
+    dragState.current = {
+      isDragging: true,
+      startX: event.clientX,
+      startY: event.clientY,
+      scrollLeft: container.scrollLeft,
+      scrollTop: container.scrollTop,
+    }
+    setIsDragging(true)
+    container.setPointerCapture?.(event.pointerId)
+  }
+
+  const handleDragMove = (event: PointerEvent<HTMLDivElement>) => {
+    if (!dragState.current.isDragging) return
+    event.preventDefault()
+    const container = boardSurfaceRef.current
+    if (!container) return
+
+    const dx = event.clientX - dragState.current.startX
+    const dy = event.clientY - dragState.current.startY
+    container.scrollLeft = dragState.current.scrollLeft - dx
+    container.scrollTop = dragState.current.scrollTop - dy
+  }
+
+  const handleDragEnd = (event: PointerEvent<HTMLDivElement>) => {
+    if (!dragState.current.isDragging) return
+    dragState.current.isDragging = false
+    setIsDragging(false)
+    boardSurfaceRef.current?.releasePointerCapture?.(event.pointerId)
+  }
+
+  const boardColumnsStyle = useMemo(
+    () => ({ gridTemplateColumns: `80px repeat(${totalTeams}, minmax(160px, 1fr))` }),
+    [totalTeams],
+  )
 
   const combinedLoading = draftsLoading || picksLoading
   const combinedError = draftsError ?? picksError
@@ -80,64 +166,119 @@ export function DraftPage() {
       </PixelCard>
     )
 
+  const scoringType = (latestDraft.settings.scoring_type || latestDraft.metadata?.scoring_type || 'PPR').toUpperCase()
+
   return (
     <div className={styles.page}>
-      <h1 className={styles.title}>📋 DRAFT BOARD — {latestDraft.season}</h1>
-      <p className={styles.sub}>
-        {latestDraft.settings.rounds} rounds · {totalTeams} teams · {latestDraft.type.toUpperCase()}
-      </p>
+      <section className={styles.hero}>
+        <div>
+          <p className={styles.leagueLabel}>{latestDraft.metadata?.name ?? 'Draft Board'}</p>
+          <h1 className={styles.title}>MSG Fantasy Football League · {latestDraft.season}</h1>
+          <p className={styles.sub}>
+            {latestDraft.settings.pick_timer ? `${latestDraft.settings.pick_timer}s clock` : 'Live clock'} ·{' '}
+            {totalTeams} teams · {totalRounds} rounds · {latestDraft.type.toUpperCase()} · {scoringType} scoring
+          </p>
+        </div>
+        <div className={styles.heroActions} aria-label="Draft controls">
+          <button type="button" className={styles.iconButton} aria-label="Notifications">
+            🔔
+          </button>
+          <button type="button" className={styles.iconButton} aria-label="Sound">
+            🔊
+          </button>
+          <button type="button" className={styles.iconButton} aria-label="Theme">
+            🌙
+          </button>
+          <button type="button" className={styles.iconButton} aria-label="Share board">
+            🔗
+          </button>
+        </div>
+      </section>
 
       <PixelCard className={styles.boardCard}>
-        <div className={styles.tableWrap}>
-          <table className={styles.board}>
-            <thead>
-              <tr>
-                <th className={styles.roundHeader}>RND</th>
-                {slotHeaders.map((name, i) => (
-                  <th key={i} className={styles.teamHeader}>
-                    {name}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {Array.from({ length: totalRounds }, (_, roundIdx) => {
-                const round = roundIdx + 1
-                const picks = picksByRound[round] ?? []
+        <div
+          ref={boardSurfaceRef}
+          className={clsx(styles.boardSurface, isDragging && styles.boardSurfaceDragging)}
+          onPointerDown={handleDragStart}
+          onPointerMove={handleDragMove}
+          onPointerUp={handleDragEnd}
+          onPointerLeave={handleDragEnd}
+          onPointerCancel={handleDragEnd}
+        >
+          <div className={styles.boardHeaderRow} style={boardColumnsStyle}>
+            <div className={styles.roundHeader}>Round</div>
+            {slotMeta.map((slot) => (
+              <div key={slot.slot} className={styles.teamHeader}>
+                {slot.profile?.avatarUrl ? (
+                  <img
+                    src={slot.profile.avatarUrl}
+                    alt={`${slot.label} avatar`}
+                    className={styles.headerAvatar}
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className={styles.headerAvatarFallback}>{slot.initials}</div>
+                )}
+                <div className={styles.teamHeaderCopy}>
+                  <span className={styles.teamHeaderTitle}>{slot.label}</span>
+                  <span className={styles.teamHeaderSubtitle}>{slot.owner}</span>
+                </div>
+              </div>
+            ))}
+          </div>
 
-                return (
-                  <tr key={round}>
-                    <td className={styles.roundCell}>{round}</td>
-                    {Array.from({ length: totalTeams }, (_, slotIdx) => {
-                      const pick = picks.find((p) => p.draft_slot === slotIdx + 1)
-                      if (!pick)
-                        return (
-                          <td key={slotIdx} className={styles.emptyCell}>
-                            —
-                          </td>
-                        )
-                      const player = players?.[pick.player_id]
-                      const pos = pick.metadata.position || player?.position || '?'
-                      const posColor = POSITION_COLORS[pos] ?? 'var(--color-text-muted)'
+          <div className={styles.grid} style={boardColumnsStyle}>
+            {Array.from({ length: totalRounds }, (_, roundIdx) => {
+              const round = roundIdx + 1
+              const picks = picksByRound[round] ?? []
+
+              return (
+                <Fragment key={round}>
+                  <div className={styles.roundCell}>R{round.toString().padStart(2, '0')}</div>
+                  {slotMeta.map((slot) => {
+                    const pick = picks.find((p) => p.draft_slot === slot.slot)
+                    if (!pick)
                       return (
-                        <td key={slotIdx} className={styles.pickCell}>
-                          <div className={styles.pick}>
-                            <span className={styles.pos} style={{ color: posColor }}>
-                              {pos}
-                            </span>
-                            <span className={styles.playerName}>
-                              {pick.metadata.first_name[0]}. {pick.metadata.last_name}
-                            </span>
-                            <span className={styles.team}>{pick.metadata.team}</span>
-                          </div>
-                        </td>
+                        <div key={`${round}-${slot.slot}`} className={styles.emptyCell}>
+                          <span>On the clock</span>
+                        </div>
                       )
-                    })}
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
+                    const player = players?.[pick.player_id]
+                    const pos = pick.metadata.position || player?.position || '?'
+                    const rawColor = POSITION_COLORS[pos] ?? '#5f6b7c'
+                    const bg = mixWithWhite(rawColor)
+                    const headshotUrl = getPlayerHeadshotUrl(player?.player_id ?? pick.player_id)
+                    return (
+                      <div
+                        key={`${round}-${slot.slot}`}
+                        className={styles.pickCell}
+                        style={{ background: bg, borderColor: rawColor }}
+                      >
+                        {headshotUrl ? (
+                          <img
+                            src={headshotUrl}
+                            alt={`${pick.metadata.first_name} ${pick.metadata.last_name}`}
+                            className={styles.pickPhoto}
+                            loading="lazy"
+                          />
+                        ) : null}
+                        <div className={styles.pickMeta}>
+                          <span className={styles.pickOverall}>#{pick.pick_no}</span>
+                          <span className={styles.pos}>{pos}</span>
+                        </div>
+                        <p className={styles.playerName}>
+                          {pick.metadata.first_name?.[0]}. {pick.metadata.last_name}
+                        </p>
+                        <div className={styles.pickFooter}>
+                          <span className={styles.team}>{pick.metadata.team}</span>
+                        </div>
+                      </div>
+                    )
+                  })}
+                </Fragment>
+              )
+            })}
+          </div>
         </div>
       </PixelCard>
     </div>
