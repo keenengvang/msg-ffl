@@ -141,7 +141,7 @@ export function DraftPage() {
   }
 
   const boardColumnsStyle = useMemo(
-    () => ({ gridTemplateColumns: `80px repeat(${totalTeams}, minmax(160px, 1fr))` }),
+    () => ({ gridTemplateColumns: `70px repeat(${totalTeams}, minmax(120px, 1fr))` }),
     [totalTeams],
   )
 

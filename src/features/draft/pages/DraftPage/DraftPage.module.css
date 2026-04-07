@@ -1,16 +1,16 @@
 .page {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .hero {
   display: flex;
   justify-content: space-between;
-  gap: var(--space-4);
-  padding: var(--space-4);
+  gap: var(--space-3);
+  padding: var(--space-3);
   border: var(--border-pixel);
-  border-radius: 20px;
+  border-radius: 16px;
   background: var(--color-bg-card);
   align-items: flex-start;
 }
@@ -25,14 +25,14 @@
 
 .title {
   composes: section-heading from global;
-  font-size: clamp(20px, 2.8vw, 36px);
+  font-size: clamp(18px, 2.2vw, 30px);
   color: var(--color-text-primary);
 }
 
 .sub {
   composes: body-copy from global;
   color: var(--color-text-secondary);
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .heroActions {
@@ -41,12 +41,12 @@
 }
 
 .iconButton {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   border: 1px solid var(--color-border-subtle);
   background: var(--color-bg-card-hover);
-  font-size: 20px;
+  font-size: 18px;
   display: grid;
   place-items: center;
   cursor: pointer;
@@ -54,7 +54,7 @@
 }
 
 .boardCard {
-  padding: var(--space-3);
+  padding: var(--space-2);
 }
 
 .boardCard:hover {
@@ -63,11 +63,12 @@
 }
 
 .boardSurface {
-  border-radius: 20px;
-  padding: var(--space-3);
+  border-radius: 16px;
+  padding: var(--space-2);
   overflow-x: auto;
   cursor: grab;
   touch-action: none;
+  font-size: 0.9rem;
 }
 
 .boardSurfaceDragging {
@@ -79,7 +80,7 @@
 .grid {
   display: grid;
   align-items: stretch;
-  gap: var(--space-2);
+  gap: var(--space-1);
 }
 
 .boardHeaderRow {
@@ -97,13 +98,14 @@
   color: var(--color-text-muted);
   display: flex;
   align-items: flex-end;
+  font-size: 0.7rem;
 }
 
 .teamHeader {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-1);
+  gap: 4px;
   padding-bottom: var(--space-1);
   color: var(--color-text-primary);
   width: 100%;
@@ -123,20 +125,22 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 0.85rem;
 }
 
 .teamHeaderSubtitle {
   composes: stat-label from global;
   text-transform: uppercase;
   color: var(--color-text-muted);
+  font-size: 0.65rem;
 }
 
 .headerAvatar,
 .headerAvatarFallback {
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  border: 2px solid var(--color-border);
+  border: 1.5px solid var(--color-border);
   object-fit: cover;
   background: var(--color-bg-card);
   display: grid;
@@ -144,6 +148,7 @@
   font-weight: 700;
   color: var(--color-text-primary);
   flex-shrink: 0;
+  font-size: 0.85rem;
 }
 
 .grid {
@@ -157,26 +162,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
+  border-radius: 10px;
   border: 1px dashed var(--color-border-subtle);
-  padding: 6px;
-  min-height: 38px;
+  padding: 4px;
+  min-height: 32px;
 }
 
 .pickCell {
-  border-radius: 12px;
+  border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.05);
   background: rgba(255, 255, 255, 0.9);
-  padding: 6px 8px;
+  padding: 4px 6px;
   display: flex;
   flex-direction: column;
   gap: 2px;
-  min-height: 38px;
+  min-height: 32px;
   color: #04111f;
   box-shadow: var(--shadow-retro-xs);
   position: relative;
   overflow: hidden;
-  padding-bottom: 18px;
+  padding-bottom: 14px;
 }
 
 .pickMeta {
@@ -188,23 +193,26 @@
 
 .pickOverall {
   composes: stat-label from global;
-  font-size: 0.55rem;
+  font-size: 0.5rem;
   color: var(--color-text-muted);
 }
 
 .pos {
   composes: stat-label from global;
   font-weight: 700;
-  font-size: 0.5rem;
+  font-size: 0.45rem;
   color: var(--color-text-secondary);
 }
 
 .playerName {
   composes: body-copy from global;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
   color: #020c19;
   line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .pickFooter {
@@ -212,6 +220,9 @@
   justify-content: flex-start;
   gap: var(--space-1);
   align-items: center;
+  font-size: 0.5rem;
+  width: 100%;
+  min-width: 0;
 }
 
 .team {
@@ -219,7 +230,10 @@
   font-weight: 600;
   text-transform: uppercase;
   color: var(--color-text-secondary);
-  font-size: 0.55rem;
+  font-size: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .emptyCell {
@@ -238,8 +252,8 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
   pointer-events: none;
