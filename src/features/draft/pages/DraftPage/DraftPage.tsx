@@ -104,7 +104,14 @@ export function DraftPage() {
   })
   const [isDragging, setIsDragging] = useState(false)
 
+  const isTouchLikeInput = (pointerType: PointerEvent<HTMLDivElement>['pointerType']) =>
+    pointerType === 'touch' || pointerType === 'pen'
+
   const handleDragStart = (event: PointerEvent<HTMLDivElement>) => {
+    if (isTouchLikeInput(event.pointerType)) {
+      dragState.current.isDragging = false
+      return
+    }
     if (event.button && event.button !== 0) return
 
     const container = boardSurfaceRef.current
@@ -122,7 +129,7 @@ export function DraftPage() {
   }
 
   const handleDragMove = (event: PointerEvent<HTMLDivElement>) => {
-    if (!dragState.current.isDragging) return
+    if (isTouchLikeInput(event.pointerType) || !dragState.current.isDragging) return
     event.preventDefault()
     const container = boardSurfaceRef.current
     if (!container) return
@@ -134,7 +141,7 @@ export function DraftPage() {
   }
 
   const handleDragEnd = (event: PointerEvent<HTMLDivElement>) => {
-    if (!dragState.current.isDragging) return
+    if (isTouchLikeInput(event.pointerType) || !dragState.current.isDragging) return
     dragState.current.isDragging = false
     setIsDragging(false)
     boardSurfaceRef.current?.releasePointerCapture?.(event.pointerId)
@@ -166,32 +173,16 @@ export function DraftPage() {
       </PixelCard>
     )
 
-  const scoringType = (latestDraft.settings.scoring_type || latestDraft.metadata?.scoring_type || 'PPR').toUpperCase()
-
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
         <div>
           <p className={styles.leagueLabel}>{latestDraft.metadata?.name ?? 'Draft Board'}</p>
-          <h1 className={styles.title}>MSG Fantasy Football League · {latestDraft.season}</h1>
+          <h2 className={styles.title}>MSG Fantasy Football League · {latestDraft.season}</h2>
           <p className={styles.sub}>
             {latestDraft.settings.pick_timer ? `${latestDraft.settings.pick_timer}s clock` : 'Live clock'} ·{' '}
-            {totalTeams} teams · {totalRounds} rounds · {latestDraft.type.toUpperCase()} · {scoringType} scoring
+            {totalTeams} teams · {totalRounds} rounds · {latestDraft.type.toUpperCase()}
           </p>
-        </div>
-        <div className={styles.heroActions} aria-label="Draft controls">
-          <button type="button" className={styles.iconButton} aria-label="Notifications">
-            🔔
-          </button>
-          <button type="button" className={styles.iconButton} aria-label="Sound">
-            🔊
-          </button>
-          <button type="button" className={styles.iconButton} aria-label="Theme">
-            🌙
-          </button>
-          <button type="button" className={styles.iconButton} aria-label="Share board">
-            🔗
-          </button>
         </div>
       </section>
 

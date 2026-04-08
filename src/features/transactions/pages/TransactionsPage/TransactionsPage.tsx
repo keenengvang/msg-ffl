@@ -30,7 +30,7 @@ export function TransactionsPage() {
 
   return (
     <div className={styles.page}>
-      <h1 className={styles.title}>💱 TRANSACTIONS</h1>
+      <h2 className={styles.title}>💱 TRANSACTIONS</h2>
 
       <div className={styles.filters}>
         {(['all', 'trade', 'waiver', 'free_agent'] as Filter[]).map((f) => (

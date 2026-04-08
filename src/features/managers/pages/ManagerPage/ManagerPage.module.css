@@ -21,13 +21,12 @@
 
 .teamName {
   composes: section-heading from global;
-  font-size: 14px;
   color: var(--color-text-primary);
   margin-bottom: var(--space-2);
 }
 .managerName {
   font-family: var(--font-body);
-  font-size: 22px;
+  font-size: var(--font-size-xxl);
   color: var(--color-text-secondary);
   margin-bottom: var(--space-3);
 }
@@ -62,8 +61,8 @@
 }
 
 .streakW {
-  color: var(--color-win);
-  border: 2px solid var(--color-win);
+  color: var(--color-text-primary);
+  border: 2px solid var(--color-text-primary);
 }
 
 .streakL {
@@ -84,7 +83,7 @@
 
 .statVal {
   composes: stat-value from global;
-  font-size: 26px;
+  font-size: var(--font-size-xxl);
   color: var(--color-text-accent);
 }
 
@@ -96,7 +95,7 @@
 }
 
 .luckPos {
-  color: var(--color-win) !important;
+  color: var(--color-text-primary) !important;
 }
 .luckNeg {
   color: var(--color-loss) !important;
@@ -110,8 +109,8 @@
 
 .sectionTitle {
   font-family: var(--font-display);
-  font-size: 9px;
-  color: var(--color-accent-cyan);
+  font-size: var(--font-size-xxs);
+  color: var(--color-accent-sky);
   margin-bottom: var(--space-4);
 }
 
@@ -137,7 +136,7 @@
 }
 
 .win {
-  border-color: var(--color-win);
+  border-color: var(--color-text-primary);
   background: rgba(0, 230, 118, 0.08);
 }
 .loss {
@@ -157,7 +156,7 @@
 
 .weekScore {
   composes: stat-value from global;
-  font-size: 16px;
+  font-size: var(--font-size-md);
   color: var(--color-text-primary);
 }
 
@@ -166,7 +165,7 @@
   width: 100%;
   border-collapse: collapse;
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: var(--font-size-lg);
 }
 
 .h2hHeader {
@@ -193,7 +192,7 @@
   gap: var(--space-2);
 }
 .h2hW {
-  color: var(--color-win);
+  color: var(--color-text-primary);
   font-weight: bold;
 }
 .h2hL {
@@ -229,7 +228,7 @@
     grid-template-columns: 1fr;
   }
   .statVal {
-    font-size: 22px;
+    font-size: var(--font-size-xxl);
   }
   .timeline {
     justify-content: center;
@@ -238,7 +237,7 @@
     width: 32px;
   }
   .h2hTable {
-    font-size: 16px;
+    font-size: var(--font-size-md);
     display: block;
     overflow-x: auto;
   }

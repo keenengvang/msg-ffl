@@ -70,8 +70,8 @@
 }
 
 .active {
-  background: var(--color-accent-cyan);
-  color: #ffffff;
+  background: var(--color-accent-sky);
+  color: var(--color-accent-sky-contrast);
 }
 
 .icon {

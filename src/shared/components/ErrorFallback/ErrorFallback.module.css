@@ -45,15 +45,15 @@
   composes: stat-label from global;
   font-size: 0.65rem;
   padding: var(--retro-space-3) var(--retro-space-5);
-  border: 2px solid var(--color-accent-cyan);
+  border: 2px solid var(--color-accent-sky);
   background: transparent;
-  color: var(--color-accent-cyan);
+  color: var(--color-accent-sky);
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
 .btn:hover {
-  background: var(--color-accent-cyan);
+  background: var(--color-accent-sky);
   color: var(--color-bg);
   box-shadow: var(--glow-cyan);
 }

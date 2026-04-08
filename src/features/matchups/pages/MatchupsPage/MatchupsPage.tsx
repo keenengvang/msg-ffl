@@ -36,7 +36,7 @@ export function MatchupsPage() {
   return (
     <div className={styles.page}>
       <div className={styles.header}>
-        <h1 className={styles.title}>⚔️ MATCHUPS</h1>
+        <h2 className={styles.title}>⚔️ MATCHUPS</h2>
         <div className={styles.weekSelector}>
           <button
             className={styles.arrow}

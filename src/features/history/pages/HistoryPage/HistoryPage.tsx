@@ -62,7 +62,7 @@ export function HistoryPage() {
 
   return (
     <div className={styles.page}>
-      <h1 className={styles.title}>📅 LEAGUE HISTORY</h1>
+      <h2 className={styles.title}>📅 LEAGUE HISTORY</h2>
 
       {/* Season tabs */}
       <div className={styles.tabs}>
@@ -80,7 +80,7 @@ export function HistoryPage() {
       {/* Season standings */}
       {activeData && (
         <PixelCard>
-          <h2 className={styles.sectionTitle}>{activeData.league.season} FINAL STANDINGS</h2>
+          <h4 className={styles.sectionTitle}>{activeData.league.season} FINAL STANDINGS</h4>
           <div className={styles.champion}>🏆 {activeData.standings[0]?.teamName ?? '—'}</div>
           <div className={styles.tableWrap}>
             <table className={styles.table}>
@@ -122,7 +122,7 @@ export function HistoryPage() {
       {/* All-time leaderboard */}
       {allTime.length > 0 && (
         <PixelCard>
-          <h2 className={styles.sectionTitle}>🏅 ALL-TIME LEADERBOARD</h2>
+          <h4 className={styles.sectionTitle}>🏅 ALL-TIME LEADERBOARD</h4>
           <div className={styles.tableWrap}>
             <table className={styles.table}>
               <thead>

@@ -10,10 +10,16 @@
   justify-content: space-between;
 }
 
+.headerInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
 .title {
   composes: section-heading from global;
-  font-size: 12px;
-  color: var(--color-accent-cyan);
+  color: var(--color-accent-sky);
 }
 
 .toggle {
@@ -25,8 +31,8 @@
   transition: all var(--transition-base);
 }
 .toggle:hover {
-  color: var(--color-win);
-  border-color: var(--color-win);
+  color: var(--color-text-primary);
+  border-color: var(--color-text-primary);
 }
 
 .tableWrap {
@@ -37,7 +43,7 @@
   width: 100%;
   border-collapse: collapse;
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: var(--font-size-lg);
   min-width: 600px;
 }
 
@@ -57,7 +63,17 @@
   color: var(--color-text-primary);
 }
 .th.active {
-  color: var(--color-accent-cyan);
+  color: var(--color-accent-sky);
+}
+
+.headerLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sortIndicator {
+  font-size: 0.75em;
 }
 
 .table tr {
@@ -65,10 +81,6 @@
 }
 .table tr:hover {
   background: var(--color-bg-card-hover);
-}
-
-.playoff td {
-  border-left: 3px solid var(--color-win);
 }
 
 .rankCell {
@@ -89,11 +101,11 @@
 }
 
 .teamName {
-  font-size: 20px;
+  font-size: var(--font-size-xl);
   color: var(--color-text-primary);
 }
 .managerName {
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
 }
 
@@ -104,7 +116,7 @@
 }
 .pf {
   padding: var(--space-3);
-  color: var(--color-accent-cyan);
+  color: var(--color-accent-sky);
   font-weight: bold;
 }
 .pa {
@@ -112,26 +124,22 @@
   color: var(--color-text-secondary);
 }
 
-.streakW {
-  composes: stat-label from global;
-  font-size: 0.5rem;
-  padding: 2px 6px;
-  color: var(--color-win);
-  border: 1px solid var(--color-win);
+.statusCell {
+  text-align: center;
 }
 
-.streakL {
-  composes: stat-label from global;
-  font-size: 0.5rem;
-  padding: 2px 6px;
-  color: var(--color-loss);
-  border: 1px solid var(--color-loss);
+.statusHeader {
+  text-align: center;
+}
+
+.rankHeader {
+  text-align: center;
 }
 
 .inPlayoffs {
   composes: stat-label from global;
   font-size: 0.5rem;
-  color: var(--color-win);
+  color: var(--color-text-primary);
 }
 
 .outPlayoffs {
@@ -141,7 +149,7 @@
 }
 
 .luckPos {
-  color: var(--color-win);
+  color: var(--color-text-primary);
   font-weight: bold;
   padding: var(--space-3);
 }
@@ -154,15 +162,15 @@
   composes: stat-label from global;
   font-size: 0.55rem;
   color: var(--color-text-muted);
-  margin-top: var(--space-4);
-  padding-top: var(--space-3);
-  border-top: 1px solid var(--color-border-subtle);
 }
 
 @media (max-width: 1024px) {
   .header {
     flex-direction: column;
     align-items: flex-start;
+    gap: var(--space-2);
+  }
+  .headerInfo {
     gap: var(--space-2);
   }
   .toggle {
@@ -173,17 +181,17 @@
 
 @media (max-width: 768px) {
   .table {
-    font-size: 16px;
+    font-size: var(--font-size-md);
     min-width: 520px;
   }
   .team {
     gap: var(--space-2);
   }
   .teamName {
-    font-size: 16px;
+    font-size: var(--font-size-md);
   }
   .managerName {
-    font-size: 12px;
+    font-size: var(--font-size-xs);
   }
 }
 

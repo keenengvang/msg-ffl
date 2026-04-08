@@ -17,7 +17,7 @@ export function StatBar({ value, min, max, color, label, showValue = true }: Pro
     <div className={styles.wrapper}>
       {label && <span className={styles.label}>{label}</span>}
       <div className={styles.track}>
-        <div className={styles.fill} style={{ width: `${pct}%`, background: color ?? 'var(--color-accent-cyan)' }} />
+        <div className={styles.fill} style={{ width: `${pct}%`, background: color ?? 'var(--color-accent-sky)' }} />
       </div>
       {showValue && <span className={styles.value}>{value.toFixed(1)}</span>}
     </div>

@@ -76,7 +76,7 @@ export function ManagerPage() {
         <div className={styles.profileHeader}>
           <AvatarPixel src={profile.avatarUrl} name={profile.displayName} size="xl" />
           <div className={styles.profileInfo}>
-            <h1 className={styles.teamName}>{profile.teamName}</h1>
+            <h4 className={styles.teamName}>{profile.teamName}</h4>
             <p className={styles.managerName}>{profile.displayName}</p>
             <div className={styles.badges}>
               <span className={styles.recordBadge}>{formatRecord(profile.wins, profile.losses, profile.ties)}</span>
@@ -116,7 +116,7 @@ export function ManagerPage() {
       <div className={styles.grid}>
         {/* Season Timeline */}
         <PixelCard>
-          <h2 className={styles.sectionTitle}>📅 SEASON TIMELINE</h2>
+          <h4 className={styles.sectionTitle}>📅 SEASON TIMELINE</h4>
           <div className={styles.timeline}>
             {weeklyScores.map((r) => (
               <div
@@ -136,7 +136,7 @@ export function ManagerPage() {
 
         {/* H2H Records */}
         <PixelCard>
-          <h2 className={styles.sectionTitle}>⚔️ HEAD-TO-HEAD</h2>
+          <h4 className={styles.sectionTitle}>⚔️ HEAD-TO-HEAD</h4>
           <table className={styles.h2hTable}>
             <thead>
               <tr>

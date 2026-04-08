@@ -61,7 +61,7 @@ export function PlayoffsPage() {
 
   return (
     <div className={styles.page}>
-      <h1 className={styles.title}>🏆 PLAYOFF BRACKET</h1>
+      <h2 className={styles.title}>🏆 PLAYOFF BRACKET</h2>
 
       {champProfile && (
         <PixelCard variant="legendary" className={styles.champCard}>

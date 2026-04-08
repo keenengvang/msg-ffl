@@ -33,9 +33,11 @@
   --color-accent: #3c5bff;
   --color-accent-strong: #ff4fbf;
   --color-accent-dark: #ffc857;
+  --color-accent-contrast: #ffffff;
 
   /* Legacy accent aliases retained for compatibility. Remove once all features adopt Retro tokens. */
-  --color-accent-cyan: var(--color-accent);
+  --color-accent-sky: var(--color-accent);
+  --color-accent-sky-contrast: #ffffff;
   --color-accent-pink: var(--color-accent-strong);
   --color-accent-purple: var(--color-accent-dark);
   --color-accent-lime: var(--color-accent-dark);
@@ -50,7 +52,6 @@
   --color-legendary: #ff9d00;
 
   /* Game states */
-  --color-win: #007651;
   --color-loss: #ff6b8a;
   --color-tie: #ffb347;
 
@@ -70,6 +71,16 @@
   /* Fonts */
   --font-display: 'Archivo Black', 'Archivo', 'Space Grotesk', system-ui, sans-serif;
   --font-body: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+
+  /* Type scale */
+  --font-size-xxs: 0.7rem;
+  --font-size-xs: 0.8rem;
+  --font-size-sm: 0.9rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.15rem;
+  --font-size-xl: 1.35rem;
+  --font-size-xxl: 1.7rem;
+  --font-size-hero: 2.3rem;
 
   /* Spacing */
   --space-1: 4px;
@@ -154,11 +165,13 @@
   --color-accent: #ff6fb1;
   --color-accent-strong: #79c5ff;
   --color-accent-dark: #ffd285;
+  --color-accent-contrast: #ffffff;
+  --color-accent-sky: var(--color-accent);
+  --color-accent-sky-contrast: #ffffff;
 
   --color-muted: #f2e3ff;
   --color-muted-strong: #e5d0ff;
 
-  --color-win: #0a7a63;
   --color-loss: #ff7f9d;
   --color-tie: #ffcf70;
 }
@@ -185,11 +198,13 @@
   --color-accent: #9cf6f6;
   --color-accent-strong: #f45fa4;
   --color-accent-dark: #ffd66c;
+  --color-accent-contrast: #000000;
+  --color-accent-sky: #ffffff;
+  --color-accent-sky-contrast: #000000;
 
   --color-muted: #31285b;
   --color-muted-strong: #3c3172;
 
-  --color-win: #57ffa7;
   --color-loss: #ff8ea2;
   --color-tie: #ff956c;
 }

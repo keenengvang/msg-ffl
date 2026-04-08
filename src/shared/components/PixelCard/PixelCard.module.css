@@ -101,7 +101,7 @@
 }
 
 .success {
-  --card-border: var(--color-win);
+  --card-border: var(--color-text-primary);
   --card-bg-start: rgba(0, 157, 95, 0.1);
   --card-bg-end: rgba(0, 157, 95, 0.2);
 }

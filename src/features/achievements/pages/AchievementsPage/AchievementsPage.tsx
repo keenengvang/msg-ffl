@@ -103,7 +103,7 @@ export function AchievementsPage() {
 
   return (
     <div className={styles.page}>
-      <h1 className={styles.title}>🎖️ ACHIEVEMENTS</h1>
+      <h2 className={styles.title}>🎖️ ACHIEVEMENTS</h2>
 
       {/* Trophy Case */}
       {champProfile && (

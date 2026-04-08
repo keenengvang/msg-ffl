@@ -24,7 +24,7 @@ export function ErrorFallback() {
     <div className={styles.wrapper}>
       <div className={styles.inner}>
         <p className={styles.glitch}>⚠</p>
-        <h1 className={styles.title}>{title}</h1>
+        <h2 className={styles.title}>{title}</h2>
         <p className={styles.message}>{message}</p>
         <div className={styles.actions}>
           <button className={styles.btn} onClick={() => navigate('/')}>

@@ -8,158 +8,33 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-auto-rows: auto;
   gap: var(--space-4);
   padding: var(--space-6);
 }
 
-.standingsCard {
-  grid-column: 1;
-  grid-row: 1 / 3;
-}
-.powerCard {
-  grid-column: 2;
-  grid-row: 1;
-}
-.statsCard {
-  grid-column: 2;
-  grid-row: 2;
-}
-.linksCard {
-  grid-column: 1 / 3;
-  grid-row: 3;
-}
-
 .cardTitle {
   composes: section-heading from global;
-  font-size: 10px;
-  color: var(--color-accent-cyan);
+  color: var(--color-accent-sky);
   margin-bottom: var(--space-4);
   letter-spacing: 0.08em;
 }
 
-.tableWrap {
-  width: 100%;
-  overflow-x: auto;
-}
-
-/* Standings table */
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: var(--font-body);
-  font-size: 18px;
-}
-
-.table th {
-  font-size: 0.65rem;
-  color: var(--color-text-muted);
-  text-align: left;
-  padding: var(--space-1) var(--space-2);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.table td {
-  padding: var(--space-2);
-  vertical-align: middle;
-  color: var(--color-text-primary);
-}
-
-.playoffRow td {
-  color: var(--color-win);
-}
-
-.cutline {
-  composes: stat-label from global;
-  font-size: 0.55rem;
-  color: var(--color-accent-pink);
-  text-align: center;
-  opacity: 0.7;
-}
-
-.cutline td {
-  padding: var(--space-1) 0;
-}
-
-.rank {
-  composes: stat-label from global;
-  font-size: 0.55rem;
-  text-align: center;
-  width: 28px;
-}
-
-.teamLink {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  color: inherit;
-}
-
-.teamLink:hover {
-  color: var(--color-accent-cyan);
-}
-
-.record {
-  color: var(--color-text-secondary) !important;
-  font-size: 16px;
-}
-.pts {
-  color: var(--color-text-accent) !important;
-  font-weight: bold;
-}
-
-.viewAll {
-  composes: stat-label from global;
-  display: block;
-  font-size: 0.55rem;
-  color: var(--color-accent-cyan);
-  margin-top: var(--space-4);
-  text-align: right;
-  opacity: 0.7;
-  transition: opacity var(--transition-base);
-}
-.viewAll:hover {
-  opacity: 1;
-}
-
-/* Power rankings */
-.powerList {
+.countdownHero {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
-}
-
-.powerRow {
-  display: flex;
   align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-2);
-  border: 1px solid var(--color-border-subtle);
-  transition: border-color var(--transition-base);
-  color: inherit;
-}
-.powerRow:hover {
-  border-color: var(--color-accent-cyan);
+  gap: var(--space-2);
+  padding: var(--space-4);
+  text-align: center;
 }
 
-.powerRank {
+.countdownLabel {
   composes: stat-label from global;
-  font-size: 0.5rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
   color: var(--color-text-muted);
-  min-width: 28px;
-}
-
-.powerName {
-  flex: 1;
-  composes: body-copy from global;
-  font-size: 18px;
-}
-
-.powerScore {
-  composes: stat-value from global;
-  font-size: 0.6rem;
-  color: var(--color-legendary);
 }
 
 /* Fun stats */
@@ -182,7 +57,7 @@
 }
 
 .statIcon {
-  font-size: 20px;
+  font-size: var(--font-size-xl);
 }
 
 .statLabel {
@@ -194,53 +69,19 @@
 
 .statValue {
   composes: stat-value from global;
-  font-size: 22px;
+  font-size: var(--font-size-xxl);
   color: var(--color-text-accent);
 }
 
 .statSub {
   composes: body-copy from global;
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
-}
-
-/* Quick links */
-.links {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-3);
-}
-
-.quickLink {
-  composes: stat-label from global;
-  display: block;
-  font-size: 0.5rem;
-  color: var(--color-text-secondary);
-  padding: var(--space-3);
-  border: var(--border-pixel);
-  text-align: center;
-  transition: all var(--transition-base);
-}
-
-.quickLink:hover {
-  color: var(--color-accent-cyan);
-  border-color: var(--color-accent-cyan);
-  box-shadow: var(--glow-cyan);
 }
 
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: 1fr;
-  }
-  .standingsCard,
-  .powerCard,
-  .statsCard,
-  .linksCard {
-    grid-column: 1;
-    grid-row: auto;
-  }
-  .links {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -249,15 +90,6 @@
     padding: var(--space-4) var(--space-3);
     gap: var(--space-3);
   }
-  .table {
-    font-size: 16px;
-  }
-  .powerRow {
-    flex-wrap: wrap;
-  }
-  .links {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 480px) {
@@ -265,13 +97,9 @@
     padding: var(--space-3) var(--space-2);
   }
   .cardTitle {
-    font-size: 8px;
+    font-size: var(--font-size-xxs);
   }
   .stat {
     flex-direction: column;
-  }
-  .teamLink {
-    flex-direction: column;
-    align-items: flex-start;
   }
 }

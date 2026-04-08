@@ -11,7 +11,17 @@ import { formatPoints, formatRecord } from '@/shared/utils/format/format'
 import { formatOrdinal } from '@/shared/utils/format/format'
 import styles from './StandingsPage.module.css'
 
-type SortKey = 'rank' | 'wins' | 'pf' | 'pa' | 'luck'
+type SortKey = 'rank' | 'team' | 'wins' | 'pf' | 'pa' | 'status' | 'luck'
+
+const defaultSortDirection: Record<SortKey, 'asc' | 'desc'> = {
+  rank: 'asc',
+  team: 'asc',
+  wins: 'desc',
+  pf: 'desc',
+  pa: 'asc',
+  status: 'desc',
+  luck: 'desc',
+}
 
 export function StandingsPage() {
   const { profiles, isLoading: profilesLoading, error: profilesError, refetch: refetchProfiles } = useManagerProfiles()
@@ -21,32 +31,62 @@ export function StandingsPage() {
     error: matchupsError,
     refetch: refetchMatchups,
   } = useAllMatchups()
-  const [sortKey, setSortKey] = useState<SortKey>('rank')
+  const [sortConfig, setSortConfig] = useState<{ key: SortKey; direction: 'asc' | 'desc' }>({
+    key: 'rank',
+    direction: defaultSortDirection.rank,
+  })
   const [showLuck, setShowLuck] = useState(false)
 
   const allWeekData = matchupWeeks
   const luckIndex = useMemo(() => computeLuckIndex(allWeekData), [allWeekData])
 
   const sorted = useMemo(() => {
-    const base = [...profiles].sort((a, b) => {
-      if (b.wins !== a.wins) return b.wins - a.wins
-      return b.pointsFor - a.pointsFor
-    })
-    const withRank = base.map((p, i) => ({ ...p, defaultRank: i + 1 }))
+    const ranked = [...profiles]
+      .sort((a, b) => {
+        if (b.wins !== a.wins) return b.wins - a.wins
+        return b.pointsFor - a.pointsFor
+      })
+      .map((p, i) => ({ ...p, defaultRank: i + 1 }))
 
-    switch (sortKey) {
-      case 'wins':
-        return withRank.sort((a, b) => b.wins - a.wins || b.pointsFor - a.pointsFor)
-      case 'pf':
-        return withRank.sort((a, b) => b.pointsFor - a.pointsFor)
-      case 'pa':
-        return withRank.sort((a, b) => a.pointsAgainst - b.pointsAgainst)
-      case 'luck':
-        return withRank.sort((a, b) => (luckIndex[b.rosterId] ?? 0) - (luckIndex[a.rosterId] ?? 0))
-      default:
-        return withRank
+    const multiplier = sortConfig.direction === 'asc' ? 1 : -1
+
+    const comparator = (a, b) => {
+      switch (sortConfig.key) {
+        case 'rank':
+          return (a.defaultRank - b.defaultRank) * multiplier
+        case 'team': {
+          const teamDiff = a.teamName.localeCompare(b.teamName, undefined, { sensitivity: 'base' })
+          if (teamDiff !== 0) return teamDiff * multiplier
+          return a.displayName.localeCompare(b.displayName, undefined, { sensitivity: 'base' }) * multiplier
+        }
+        case 'wins': {
+          const diff = a.wins - b.wins
+          if (diff !== 0) return diff * multiplier
+          return (a.pointsFor - b.pointsFor) * multiplier
+        }
+        case 'pf':
+          return (a.pointsFor - b.pointsFor) * multiplier
+        case 'pa':
+          return (a.pointsAgainst - b.pointsAgainst) * multiplier
+        case 'status': {
+          const playoffA = Number(a.defaultRank <= 6)
+          const playoffB = Number(b.defaultRank <= 6)
+          const diff = playoffA - playoffB
+          if (diff !== 0) return diff * multiplier
+          return (a.defaultRank - b.defaultRank) * multiplier
+        }
+        case 'luck': {
+          const luckA = luckIndex[a.rosterId] ?? 0
+          const luckB = luckIndex[b.rosterId] ?? 0
+          return (luckA - luckB) * multiplier
+        }
+        default:
+          return 0
+      }
     }
-  }, [profiles, sortKey, luckIndex])
+
+    return [...ranked].sort(comparator)
+  }, [profiles, sortConfig, luckIndex])
 
   const combinedLoading = profilesLoading || matchupsLoading
   const combinedError = profilesError ?? matchupsError
@@ -63,10 +103,24 @@ export function StandingsPage() {
       />
     )
 
-  function col(key: SortKey, label: string) {
+  const handleSort = (key: SortKey) => {
+    setSortConfig((prev) => {
+      if (prev.key === key) {
+        return { key, direction: prev.direction === 'asc' ? 'desc' : 'asc' }
+      }
+      return { key, direction: defaultSortDirection[key] }
+    })
+  }
+
+  function col(key: SortKey, label: string, extraClass?: string) {
+    const isActive = sortConfig.key === key
+    const headerClasses = [styles.th, extraClass, isActive ? styles.active : ''].filter(Boolean).join(' ')
     return (
-      <th className={[styles.th, sortKey === key ? styles.active : ''].join(' ')} onClick={() => setSortKey(key)}>
-        {label}
+      <th className={headerClasses} onClick={() => handleSort(key)}>
+        <span className={styles.headerLabel}>
+          {label}
+          {isActive && <span className={styles.sortIndicator}>{sortConfig.direction === 'asc' ? '↑' : '↓'}</span>}
+        </span>
       </th>
     )
   }
@@ -74,7 +128,10 @@ export function StandingsPage() {
   return (
     <div className={styles.page}>
       <div className={styles.header}>
-        <h1 className={styles.title}>📊 STANDINGS</h1>
+        <div className={styles.headerInfo}>
+          <h2 className={styles.title}>📊 STANDINGS</h2>
+          <div className={styles.cutlineNote}>🎯 Top 6 teams make the playoffs · Click column headers to sort</div>
+        </div>
         <button className={styles.toggle} onClick={() => setShowLuck(!showLuck)}>
           {showLuck ? '🍀 HIDE LUCK' : '🍀 SHOW LUCK INDEX'}
         </button>
@@ -85,13 +142,12 @@ export function StandingsPage() {
           <table className={styles.table}>
             <thead>
               <tr>
-                <th className={styles.th}>#</th>
-                <th className={styles.th}>TEAM</th>
+                {col('rank', '#', styles.rankHeader)}
+                {col('team', 'TEAM')}
                 {col('wins', 'W-L')}
                 {col('pf', 'PF')}
                 {col('pa', 'PA')}
-                <th className={styles.th}>STREAK</th>
-                <th className={styles.th}>STATUS</th>
+                {col('status', 'PLAYOFF STATUS', styles.statusHeader)}
                 {showLuck && col('luck', 'LUCK')}
               </tr>
             </thead>
@@ -100,8 +156,10 @@ export function StandingsPage() {
                 const isPlayoff = p.defaultRank <= 6
                 const luck = luckIndex[p.rosterId] ?? 0
                 return (
-                  <tr key={p.rosterId} className={isPlayoff ? styles.playoff : styles.bubble}>
-                    <td className={styles.rankCell}>{i === 0 && sortKey === 'rank' ? '👑' : formatOrdinal(i + 1)}</td>
+                  <tr key={p.rosterId}>
+                    <td className={styles.rankCell}>
+                      {i === 0 && sortConfig.key === 'rank' ? '👑' : formatOrdinal(i + 1)}
+                    </td>
                     <td>
                       <Link to={`/manager/${p.rosterId}`} className={styles.team}>
                         <AvatarPixel src={p.avatarUrl} name={p.displayName} size="sm" />
@@ -114,15 +172,7 @@ export function StandingsPage() {
                     <td className={styles.record}>{formatRecord(p.wins, p.losses, p.ties)}</td>
                     <td className={styles.pf}>{formatPoints(p.pointsFor)}</td>
                     <td className={styles.pa}>{formatPoints(p.pointsAgainst)}</td>
-                    <td>
-                      {p.streak && (
-                        <span className={p.streak.type === 'W' ? styles.streakW : styles.streakL}>
-                          {p.streak.type}
-                          {p.streak.count}
-                        </span>
-                      )}
-                    </td>
-                    <td>
+                    <td className={styles.statusCell}>
                       <span className={isPlayoff ? styles.inPlayoffs : styles.outPlayoffs}>
                         {isPlayoff ? '🎯 IN' : '❌ OUT'}
                       </span>
@@ -139,8 +189,6 @@ export function StandingsPage() {
             </tbody>
           </table>
         </div>
-
-        <div className={styles.cutlineNote}>🎯 Top 6 teams make the playoffs · Click column headers to sort</div>
       </PixelCard>
     </div>
   )

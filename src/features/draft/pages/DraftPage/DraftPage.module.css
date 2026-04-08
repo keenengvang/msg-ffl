@@ -25,36 +25,23 @@
 
 .title {
   composes: section-heading from global;
-  font-size: clamp(18px, 2.2vw, 30px);
   color: var(--color-text-primary);
 }
 
 .sub {
   composes: body-copy from global;
   color: var(--color-text-secondary);
-  font-size: 14px;
-}
-
-.heroActions {
-  display: flex;
-  gap: var(--space-2);
-}
-
-.iconButton {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  border: 1px solid var(--color-border-subtle);
-  background: var(--color-bg-card-hover);
-  font-size: 18px;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  box-shadow: var(--shadow-retro-sm);
+  font-size: var(--font-size-sm);
 }
 
 .boardCard {
   padding: var(--space-2);
+}
+
+.boardCard :global(.pixelcard-module__body),
+.boardCard :global([class*='PixelCard__body___']),
+.boardCard :global([class*='PixelCard-module__body___']) {
+  padding-right: var(--space-2);
 }
 
 .boardCard:hover {
@@ -67,7 +54,7 @@
   padding: var(--space-2);
   overflow-x: auto;
   cursor: grab;
-  touch-action: none;
+  touch-action: pan-x pan-y;
   font-size: 0.9rem;
 }
 
@@ -206,7 +193,7 @@
 
 .playerName {
   composes: body-copy from global;
-  font-size: 11px;
+  font-size: var(--font-size-xs);
   font-weight: 700;
   color: #020c19;
   line-height: 1.1;
@@ -242,7 +229,7 @@
   color: var(--color-text-muted);
   display: grid;
   place-items: center;
-  font-size: 10px;
+  font-size: var(--font-size-xs);
   min-height: 38px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -274,16 +261,6 @@
     min-width: 160px;
   }
   .playerName {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 640px) {
-  .heroActions {
-    width: 100%;
-    justify-content: space-between;
-  }
-  .iconButton {
-    flex: 1;
+    font-size: var(--font-size-sm);
   }
 }

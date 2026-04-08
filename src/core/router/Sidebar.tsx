@@ -3,12 +3,14 @@ import logoImage from './assets/msgffl.png'
 import styles from './Sidebar.module.css'
 
 const NAV_ITEMS = [
-  { to: '/', label: 'Dashboard', icon: '🏠' },
+  { to: '/', label: 'Home', icon: '🏠' },
   { to: '/standings', label: 'Standings', icon: '🏅' },
   { to: '/matchups', label: 'Matchups', icon: '⚔️' },
   { to: '/playoffs', label: 'Playoffs', icon: '🏆' },
   { to: '/achievements', label: 'Achievements', icon: '🎖️' },
   { to: '/history', label: 'History', icon: '📅' },
+  { to: '/constitution', label: 'Constitution', icon: '⚖️' },
+  { to: '/managers', label: 'Managers', icon: '🧑‍💼' },
   { to: '/draft', label: 'Draft', icon: '📋' },
   { to: '/transactions', label: 'Transactions', icon: '💱' },
 ]

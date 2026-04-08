@@ -9,7 +9,7 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: var(--font-size-md);
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
 }
@@ -18,10 +18,50 @@ body {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   font-family: var(--font-body);
-  font-size: clamp(0.95rem, 0.6vw + 0.8rem, 1.05rem);
+  font-size: var(--font-size-md);
   line-height: 1.5;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: var(--font-size-hero);
+  line-height: 1.05;
+  margin-bottom: var(--space-4);
+}
+
+h2 {
+  font-size: var(--font-size-xxl);
+  line-height: 1.1;
+  margin-bottom: var(--space-3);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+  line-height: 1.15;
+  margin-bottom: var(--space-2);
+}
+
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-lg);
+  line-height: 1.2;
+  margin-bottom: var(--space-2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 /* Typography utilities */
@@ -29,7 +69,7 @@ body {
   font-family: var(--font-display);
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-size: var(--font-size-hero);
   line-height: 1.1;
 }
 
@@ -42,7 +82,7 @@ body {
 
 .body-copy {
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: var(--font-size-md);
   line-height: 1.6;
 }
 
@@ -50,7 +90,7 @@ body {
   font-family: var(--font-body);
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  font-size: 0.8rem;
+  font-size: var(--font-size-xs);
   font-weight: 600;
 }
 
@@ -58,7 +98,7 @@ body {
   font-family: var(--font-body);
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  font-size: 0.95rem;
+  font-size: var(--font-size-sm);
   font-weight: 600;
   color: var(--color-text-muted);
 }
@@ -66,7 +106,7 @@ body {
 .stat-value {
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 1.15rem;
+  font-size: var(--font-size-lg);
   line-height: 1.2;
   letter-spacing: 0.04em;
   font-variant-numeric: tabular-nums;
@@ -77,14 +117,14 @@ body {
   font-family: var(--font-body);
   text-transform: uppercase;
   letter-spacing: 0.24em;
-  font-size: 0.75rem;
+  font-size: var(--font-size-xxs);
   color: var(--color-accent-strong);
 }
 
 .tagline {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 0.9rem;
+  font-size: var(--font-size-sm);
   letter-spacing: 0.06em;
   color: var(--color-text-muted);
 }
@@ -136,7 +176,7 @@ img {
 
 /* Selection */
 ::selection {
-  background: var(--color-accent-cyan);
+  background: var(--color-accent-sky);
   color: var(--color-bg-primary);
 }
 

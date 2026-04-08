@@ -5,8 +5,7 @@
 }
 .title {
   composes: section-heading from global;
-  font-size: 12px;
-  color: var(--color-accent-cyan);
+  color: var(--color-accent-sky);
 }
 .tabs {
   display: flex;
@@ -15,7 +14,7 @@
 }
 .tab {
   composes: section-heading from global;
-  font-size: 9px;
+  font-size: var(--font-size-xxs);
   color: var(--color-text-secondary);
   border: var(--border-pixel);
   padding: var(--space-2) var(--space-4);
@@ -25,18 +24,17 @@
   color: var(--color-text-primary);
 }
 .tabActive {
-  color: var(--color-accent-cyan) !important;
-  border-color: var(--color-accent-cyan) !important;
+  color: var(--color-accent-sky) !important;
+  border-color: var(--color-accent-sky) !important;
 }
 .sectionTitle {
   composes: section-heading from global;
-  font-size: 9px;
-  color: var(--color-accent-cyan);
+  color: var(--color-accent-sky);
   margin-bottom: var(--space-4);
 }
 .champion {
   composes: section-heading from global;
-  font-size: 12px;
+  font-size: var(--font-size-xs);
   color: var(--color-legendary);
   margin-bottom: var(--space-4);
   text-shadow: var(--glow-gold);
@@ -45,7 +43,7 @@
   width: 100%;
   border-collapse: collapse;
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: var(--font-size-lg);
 }
 .table th {
   font-size: 0.6rem;
@@ -62,7 +60,7 @@
   background: var(--color-bg-card-hover);
 }
 .playoff {
-  border-left: 3px solid var(--color-win);
+  border-left: 3px solid var(--color-text-primary);
 }
 .rank {
   composes: stat-label from global;
@@ -73,19 +71,19 @@
 .teamName {
   color: var(--color-text-primary);
   padding: var(--space-2);
-  font-size: 18px;
+  font-size: var(--font-size-lg);
 }
 .manager {
   color: var(--color-text-secondary);
   padding: var(--space-2);
-  font-size: 16px;
+  font-size: var(--font-size-md);
 }
 .record {
   color: var(--color-text-primary);
   padding: var(--space-2);
 }
 .pf {
-  color: var(--color-accent-cyan);
+  color: var(--color-accent-sky);
   padding: var(--space-2);
   font-weight: bold;
 }
@@ -100,7 +98,7 @@
 }
 
 .inPlayoffs {
-  color: var(--color-win);
+  color: var(--color-text-primary);
 }
 
 .outPlayoffs {
@@ -119,7 +117,7 @@
 
 @media (max-width: 768px) {
   .table {
-    font-size: 16px;
+    font-size: var(--font-size-md);
     display: block;
     overflow-x: auto;
   }
@@ -129,19 +127,19 @@
   }
   .teamName,
   .manager {
-    font-size: 16px;
+    font-size: var(--font-size-md);
   }
 }
 
 @media (max-width: 480px) {
   .title {
-    font-size: 10px;
+    font-size: var(--font-size-xs);
   }
   .sectionTitle,
   .champion {
-    font-size: 10px;
+    font-size: var(--font-size-xs);
   }
   .table {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
   }
 }

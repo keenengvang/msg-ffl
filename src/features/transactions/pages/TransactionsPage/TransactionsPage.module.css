@@ -5,8 +5,7 @@
 }
 .title {
   composes: section-heading from global;
-  font-size: 12px;
-  color: var(--color-accent-cyan);
+  color: var(--color-accent-sky);
 }
 .filters {
   display: flex;
@@ -25,8 +24,8 @@
   color: var(--color-text-primary);
 }
 .filterActive {
-  color: var(--color-accent-cyan) !important;
-  border-color: var(--color-accent-cyan) !important;
+  color: var(--color-accent-sky) !important;
+  border-color: var(--color-accent-sky) !important;
 }
 .feed {
   display: flex;
@@ -35,7 +34,7 @@
 }
 .empty {
   font-family: var(--font-body);
-  font-size: 20px;
+  font-size: var(--font-size-xl);
   color: var(--color-text-muted);
   text-align: center;
   padding: var(--space-8);
@@ -52,10 +51,7 @@
 }
 
 @media (max-width: 480px) {
-  .title {
-    font-size: 10px;
-  }
   .empty {
-    font-size: 16px;
+    font-size: var(--font-size-md);
   }
 }

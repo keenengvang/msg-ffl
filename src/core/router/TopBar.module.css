@@ -19,12 +19,13 @@
   display: flex;
   align-items: center;
   gap: var(--retro-space-3);
+  height: var(--topbar-height);
   min-width: 0;
 }
 
 .title {
   composes: section-heading from global;
-  font-size: 1rem;
+  margin: 0;
   letter-spacing: 0.15em;
 }
 
@@ -92,6 +93,7 @@
     flex-wrap: wrap;
     row-gap: var(--retro-space-2);
     align-self: center;
+    height: auto;
   }
   .right {
     display: none;

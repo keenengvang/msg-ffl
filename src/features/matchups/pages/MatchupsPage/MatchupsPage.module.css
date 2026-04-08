@@ -14,8 +14,7 @@
 
 .title {
   composes: section-heading from global;
-  font-size: 12px;
-  color: var(--color-accent-cyan);
+  color: var(--color-accent-sky);
 }
 
 .weekSelector {
@@ -33,8 +32,8 @@
   transition: all var(--transition-base);
 }
 .arrow:hover:not(:disabled) {
-  color: var(--color-accent-cyan);
-  border-color: var(--color-accent-cyan);
+  color: var(--color-accent-sky);
+  border-color: var(--color-accent-sky);
 }
 .arrow:disabled {
   opacity: 0.3;
@@ -59,28 +58,33 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 28px;
-  height: 24px;
-  padding: 0 var(--space-1);
+  min-width: 40px;
+  height: 32px;
+  padding: 0 var(--space-2);
   border-radius: var(--retro-space-1);
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   font-weight: 600;
+  color: var(--color-text-primary);
   background: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
   transition: all var(--transition-base);
 }
 .dot:hover {
-  border-color: var(--color-accent-cyan);
+  border-color: var(--color-accent-sky);
 }
 .dotActive {
-  background: var(--color-accent-cyan);
-  border-color: var(--color-accent-cyan);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 .dotPlayoff {
   border-color: var(--color-legendary);
 }
 .dotPlayoff.dotActive {
   background: var(--color-legendary);
+  border-color: var(--color-legendary);
+  color: #000000;
 }
 
 .grid {
@@ -114,20 +118,20 @@
 
 .teamName {
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: var(--font-size-lg);
   color: var(--color-text-primary);
   text-align: center;
 }
 .managerName {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
 }
 
 .score {
   composes: stat-value from global;
   font-size: 1rem;
-  color: var(--color-accent-cyan);
+  color: var(--color-accent-sky);
   animation: countUp 400ms ease both;
 }
 
@@ -145,8 +149,8 @@
 .winTag {
   composes: stat-label from global;
   font-size: 0.45rem;
-  color: var(--color-win);
-  border: 1px solid var(--color-win);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-text-primary);
   padding: 2px 6px;
 }
 
@@ -168,7 +172,7 @@
 
 .empty {
   font-family: var(--font-body);
-  font-size: 20px;
+  font-size: var(--font-size-xl);
   color: var(--color-text-muted);
   text-align: center;
   padding: var(--space-8);
@@ -213,9 +217,9 @@
     text-align: center;
   }
   .teamName {
-    font-size: 16px;
+    font-size: var(--font-size-md);
   }
   .managerName {
-    font-size: 12px;
+    font-size: var(--font-size-xs);
   }
 }

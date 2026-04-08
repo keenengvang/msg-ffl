@@ -57,7 +57,7 @@
 }
 
 .crown {
-  font-size: 14px;
+  font-size: var(--font-size-sm);
 }
 
 @media (max-width: 640px) {
@@ -66,13 +66,13 @@
     align-items: flex-start;
   }
   .teamName {
-    font-size: 16px;
+    font-size: var(--font-size-md);
   }
 }
 
 @media (max-width: 480px) {
   .match {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
   }
   .tbdAvatar {
     width: 28px;

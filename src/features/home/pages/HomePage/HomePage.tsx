@@ -1,16 +1,14 @@
 import { useMemo } from 'react'
-import { Link } from 'react-router-dom'
 import { useManagerProfiles } from '@/shared/hooks/use-manager-profiles'
 import { useAllMatchups } from '@/shared/hooks/use-matchups'
 import { useNflState } from '@/shared/hooks/use-nfl-state'
 import { PixelCard } from '@/shared/components/PixelCard/PixelCard'
-import { AvatarPixel } from '@/shared/components/AvatarPixel/AvatarPixel'
+import { Countdown } from '@/shared/components/Countdown/Countdown'
 import { LoadingScreen } from '@/shared/components/LoadingScreen/LoadingScreen'
 import { ErrorState } from '@/shared/components/ErrorState/ErrorState'
 import { Ticker } from '@/shared/components/Ticker/Ticker'
-import { buildAllResults, computeFunStats, computePowerRankings } from '@/shared/utils/stats/stats-engine'
+import { buildAllResults, computeFunStats } from '@/shared/utils/stats/stats-engine'
 import { formatPoints, formatRecord } from '@/shared/utils/format/format'
-import { formatOrdinal } from '@/shared/utils/format/format'
 import styles from './HomePage.module.css'
 
 export function HomePage() {
@@ -43,15 +41,6 @@ export function HomePage() {
   const funStats = useMemo(
     () => computeFunStats(allResults, allWeekData, rosterMoves),
     [allResults, allWeekData, rosterMoves],
-  )
-
-  const powerRankings = useMemo(
-    () =>
-      computePowerRankings(
-        allResults,
-        profiles.map((p) => p.rosterId),
-      ),
-    [allResults, profiles],
   )
 
   const profileMap = useMemo(() => Object.fromEntries(profiles.map((p) => [p.rosterId, p])), [profiles])
@@ -95,87 +84,19 @@ export function HomePage() {
       />
     )
 
-  const top6 = sortedByRank.slice(0, 6)
-  const bottom = sortedByRank.slice(6)
-
   return (
     <div className={styles.page}>
       <Ticker items={tickerItems} />
 
+      <div className={styles.countdownHero}>
+        <p className={styles.countdownLabel}>Next Season Kickoff</p>
+        <Countdown />
+      </div>
+
       <div className={styles.grid}>
-        {/* Standings */}
-        <PixelCard className={styles.standingsCard}>
-          <h2 className={styles.cardTitle}>📊 STANDINGS</h2>
-          <div className={styles.tableWrap}>
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  <th className="stat-heading">#</th>
-                  <th className="stat-heading">Team</th>
-                  <th className="stat-heading">W-L</th>
-                  <th className="stat-heading">PF</th>
-                </tr>
-              </thead>
-              <tbody>
-                {top6.map((p, i) => (
-                  <tr key={p.rosterId} className={styles.playoffRow}>
-                    <td className={styles.rank}>{i === 0 ? '👑' : i === 1 ? '🥈' : i === 2 ? '🥉' : `${i + 1}`}</td>
-                    <td>
-                      <Link to={`/manager/${p.rosterId}`} className={styles.teamLink}>
-                        <AvatarPixel src={p.avatarUrl} name={p.displayName} size="sm" />
-                        <span>{p.teamName}</span>
-                      </Link>
-                    </td>
-                    <td className={styles.record}>{formatRecord(p.wins, p.losses)}</td>
-                    <td className={styles.pts}>{formatPoints(p.pointsFor)}</td>
-                  </tr>
-                ))}
-                <tr className={styles.cutline}>
-                  <td colSpan={4}>── PLAYOFF CUTLINE ──</td>
-                </tr>
-                {bottom.map((p, i) => (
-                  <tr key={p.rosterId}>
-                    <td className={styles.rank}>{top6.length + i + 1}</td>
-                    <td>
-                      <Link to={`/manager/${p.rosterId}`} className={styles.teamLink}>
-                        <AvatarPixel src={p.avatarUrl} name={p.displayName} size="sm" />
-                        <span>{p.teamName}</span>
-                      </Link>
-                    </td>
-                    <td className={styles.record}>{formatRecord(p.wins, p.losses)}</td>
-                    <td className={styles.pts}>{formatPoints(p.pointsFor)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <Link to="/standings" className={styles.viewAll}>
-            VIEW FULL STANDINGS →
-          </Link>
-        </PixelCard>
-
-        {/* Power Rankings */}
-        <PixelCard className={styles.powerCard}>
-          <h2 className={styles.cardTitle}>⚡ POWER RANKINGS</h2>
-          <div className={styles.powerList}>
-            {powerRankings.slice(0, 6).map((pr, i) => {
-              const p = profileMap[pr.rosterId]
-              if (!p) return null
-              return (
-                <Link to={`/manager/${pr.rosterId}`} key={pr.rosterId} className={styles.powerRow}>
-                  <span className={styles.powerRank}>{formatOrdinal(i + 1)}</span>
-                  <AvatarPixel src={p.avatarUrl} name={p.displayName} size="sm" />
-                  <span className={styles.powerName}>{p.teamName}</span>
-                  <span className={styles.powerScore}>{pr.score}</span>
-                </Link>
-              )
-            })}
-          </div>
-        </PixelCard>
-
         {/* Fun Stats */}
-        <PixelCard className={styles.statsCard}>
-          <h2 className={styles.cardTitle}>🎮 FUN STATS</h2>
+        <PixelCard>
+          <h4 className={styles.cardTitle}>🎮 FUN STATS</h4>
           <div className={styles.funStats}>
             {funStats.highestWeekScore && profileMap[funStats.highestWeekScore.rosterId] && (
               <div className={styles.stat}>
@@ -243,31 +164,6 @@ export function HomePage() {
                 </div>
               </div>
             )}
-          </div>
-        </PixelCard>
-
-        {/* Quick links */}
-        <PixelCard className={styles.linksCard}>
-          <h2 className={styles.cardTitle}>🕹️ QUICK LINKS</h2>
-          <div className={styles.links}>
-            <Link to="/matchups" className={styles.quickLink}>
-              ⚔️ This Week's Matchups
-            </Link>
-            <Link to="/playoffs" className={styles.quickLink}>
-              🏆 Playoff Bracket
-            </Link>
-            <Link to="/achievements" className={styles.quickLink}>
-              🎖️ Achievement Board
-            </Link>
-            <Link to="/draft" className={styles.quickLink}>
-              📋 Draft Board
-            </Link>
-            <Link to="/transactions" className={styles.quickLink}>
-              💱 Recent Transactions
-            </Link>
-            <Link to="/history" className={styles.quickLink}>
-              📅 League History
-            </Link>
           </div>
         </PixelCard>
       </div>

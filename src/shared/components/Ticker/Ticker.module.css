@@ -75,6 +75,10 @@
   padding: 0 var(--retro-space-4);
 }
 
+:global([data-theme='cosmic']) .inner {
+  color: #ffffff;
+}
+
 .sep {
   margin-left: var(--retro-space-2);
   margin-right: var(--retro-space-2);

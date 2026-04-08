@@ -11,6 +11,7 @@ interface Props {
 export function TopBar({ leagueName = 'MSG FFL', onMenuToggle, isMenuOpen = false }: Props) {
   const { data: state } = useNflState()
   const isLive = state?.season_type === 'regular' || state?.season_type === 'post'
+  const displayName = leagueName?.replace(/\$/gi, 'S') ?? 'MSG'
 
   return (
     <header className={styles.topbar}>
@@ -25,7 +26,7 @@ export function TopBar({ leagueName = 'MSG FFL', onMenuToggle, isMenuOpen = fals
         </button>
       )}
       <div className={styles.left}>
-        <h1 className={styles.title}>{leagueName}</h1>
+        <h4 className={styles.title}>{displayName}</h4>
         {state && (
           <span className={styles.week}>
             {isLive ? (

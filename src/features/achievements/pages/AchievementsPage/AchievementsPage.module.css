@@ -6,7 +6,6 @@
 
 .title {
   composes: section-heading from global;
-  font-size: 12px;
   color: var(--color-legendary);
   text-shadow: var(--glow-gold);
 }
@@ -22,7 +21,7 @@
   padding: var(--space-4);
 }
 .trophyIcon {
-  font-size: 64px;
+  font-size: var(--font-size-hero);
   animation: shimmer 2s ease-in-out infinite;
 }
 @keyframes shimmer {
@@ -42,13 +41,13 @@
 }
 .champName {
   font-family: var(--font-display);
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   color: var(--color-text-primary);
   margin-top: var(--space-2);
 }
 .champManager {
   font-family: var(--font-body);
-  font-size: 20px;
+  font-size: var(--font-size-xl);
   color: var(--color-text-secondary);
 }
 
@@ -70,8 +69,8 @@
   border-color: var(--color-text-primary);
 }
 .filterActive {
-  color: var(--color-accent-cyan) !important;
-  border-color: var(--color-accent-cyan) !important;
+  color: var(--color-accent-sky) !important;
+  border-color: var(--color-accent-sky) !important;
 }
 
 .grid {
@@ -93,7 +92,7 @@
 }
 
 .badgeIcon {
-  font-size: 32px;
+  font-size: var(--font-size-xxl);
   flex-shrink: 0;
 }
 
@@ -113,13 +112,13 @@
 
 .badgeName {
   composes: section-heading from global;
-  font-size: 8px;
+  font-size: var(--font-size-xxs);
   color: var(--color-text-primary);
 }
 
 .badgeDesc {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: var(--font-size-md);
   color: var(--color-text-secondary);
   margin-bottom: var(--space-2);
 }
@@ -135,7 +134,7 @@
   gap: var(--space-2);
   flex-wrap: wrap;
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   color: var(--color-text-primary);
 }
 .earnerWeek {
@@ -147,7 +146,7 @@
 .earnerDetail {
   composes: stat-label from global;
   font-size: 0.4rem;
-  color: var(--color-accent-cyan);
+  color: var(--color-accent-sky);
 }
 
 .locked {
@@ -158,7 +157,7 @@
 
 @media (max-width: 1024px) {
   .title {
-    font-size: 10px;
+    font-size: var(--font-size-xs);
   }
   .trophyInner {
     padding: var(--space-3);
@@ -173,16 +172,16 @@
     flex-direction: column;
   }
   .badgeIcon {
-    font-size: 40px;
+    font-size: var(--font-size-hero);
   }
   .badgeDesc {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
   }
 }
 
 @media (max-width: 480px) {
   .title {
-    font-size: 9px;
+    font-size: var(--font-size-xxs);
   }
   .filters {
     flex-direction: column;
@@ -192,9 +191,9 @@
     text-align: center;
   }
   .champManager {
-    font-size: 16px;
+    font-size: var(--font-size-md);
   }
   .earner {
-    font-size: 12px;
+    font-size: var(--font-size-xs);
   }
 }
